@@ -1,0 +1,11 @@
+meta-data:
+  repository_name: python-package-guidline
+  visibility: private
+  org-name: RyoNakagami
+  tag:
+    - uv
+    - Python
+  description: |
+    xxxxx
+  homepage: null
+  license: mit

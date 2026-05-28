@@ -1,0 +1,68 @@
+# ------------------------------------------------
+# Author: Ryo Nakagami
+# Revised: 2025-10-29
+# File: Python + 1 + Quarto minimal .gitignore
+# Description:
+#   Minimal .gitignore for Python projects using Quarto.
+#   Ignores:
+#     - Sandbox / temporary directories
+#     - Environment files
+#     - Python caches and virtualenv
+#     - Logs
+#     - Quarto generated content
+#     - Project-specific temporary directory '1/'
+# ------------------------------------------------
+
+# ---- Temporary / sandbox directories ----
+sandbox/
+tmp/
+
+# ---- Environment / sensitive files ----
+.env
+env/
+ENV/
+env.bak/
+config/
+*.gpg
+
+# ---- Cache / temporary files ----
+.DS_Store
+*.swp
+*~
+*.tmp
+*.bak
+*.old
+
+# ---- Logs ----
+logs/
+*.log
+.coverage
+
+# ---- Python virtual environment ----
+.venv/
+venv/
+.python-version
+
+# ---- Python bytecode / cache ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Linter / type checker cache ----
+.mypy_cache/
+.ruff_cache/
+
+# ---- Jupyter notebooks ----
+.ipynb_checkpoints/
+
+# ---- Quarto generated files ----
+_site/
+_freeze/
+_book/
+.quarto/
+
+
+# ---- Optional: BFG Repo-Cleaner artifacts ----
+.bfg/
+..bfg-report
+bfg_check_list/
