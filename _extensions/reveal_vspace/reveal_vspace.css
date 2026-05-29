@@ -1,0 +1,12 @@
+/* ------------------------------------------------------------------- */
+/*                        space setting                                */
+/* ------------------------------------------------------------------- */
+.reveal_vspace {
+  display: block;
+  height: var(--vspace-height, 1em); /* Default height: 1em */
+}
+
+.reveal_hspace {
+  display: inline-block;
+  width: var(--hspace-width, 1em); /* Default height: 1em */
+}

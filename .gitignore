@@ -32,6 +32,7 @@ config/
 *.tmp
 *.bak
 *.old
+*.html
 
 # ---- Logs ----
 logs/
@@ -66,3 +67,8 @@ _book/
 .bfg/
 ..bfg-report
 bfg_check_list/
+
+/.quarto/
+**/*.quarto_ipynb
+
+/.luarc.json

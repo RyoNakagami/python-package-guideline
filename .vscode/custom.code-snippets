@@ -1,0 +1,324 @@
+{
+  // --------------------------------------------
+  // Title
+  // --------------------------------------------
+  "title": {
+    "scope": "quarto",
+    "prefix": "title",
+    "body": [
+      "---",
+      "title: \"自分用VSCodeショートカットシート\"",
+      "author: \"Ryo Nakagami\"",
+      "date: \"2026-12-19\"",
+      "date-modified: \"2026-12-19\"",
+      "categories: [環境構築]",
+      "listing_category: development",
+      "comments:",
+      "  utterances:",
+      "       repo: RyoNakagami/regmonkey-datascience-blog",
+      "       label: discussion",
+      "       issue-term: title",
+      "---",
+    ],
+    "description": ""
+  },
+  // --------------------------------------------
+  // sections
+  // --------------------------------------------
+  "checkmark-header": {
+    "scope": "quarto",
+    "prefix": "checkmark-header",
+    "body": [
+      "{.checkmark-header}",
+    ],
+    "description": "adding checkmark please use it in inline scope like [test]{.checkmark-header}"
+  },
+  "mini-section": {
+    "prefix": "section",
+    "body": [
+      "[section]{.mini-section}"
+    ],
+    "description": ""
+  },
+  // --------------------------------------------
+  // table
+  // --------------------------------------------
+  "no-border-top-table": {
+    "scope": "quarto",
+    "prefix": "no-border-top-table",
+    "body": [
+      ":::: {.no-border-top-table}",
+      "",
+      "::::",
+    ],
+    "description": "no border top table"
+  },
+  // --------------------------------------------
+  // Editing
+  // --------------------------------------------
+  "border-bottom-header": {
+    "scope": "quarto",
+    "prefix": "border-bottom-header ",
+    "body": [
+      "[xxx]{.border-bottom-header}",
+    ],
+    "description": "border bottom header"
+  },
+  "quarto-slide-vspace": {
+    "scope": "quarto",
+    "prefix": "slide-vspace ",
+    "body": [
+      "{{< reveal_vspace 2em >}}",
+    ],
+    "description": "lua adding vspace"
+  },
+  // --------------------------------------------
+  // math related
+  // --------------------------------------------
+  "Definition": {
+    "scope": "quarto",
+    "prefix": "def",
+    "body": [
+      "::: {#def- .custom_problem .blog-custom-border}",
+      "[エンタルピー]{.def-title}",
+      "",
+      ":::",
+      "",
+    ],
+    "description": "Gray Color Text Block"
+  },
+  "info-box": {
+    "scope": "quarto",
+    "prefix": "info-box",
+    "body": [
+      "::: {.custom_problem .blog-custom-border}",
+      "[エンタルピー]{.def-title-no-before}",
+      "",
+      ":::",
+      "",
+    ],
+    "description": "Gray Color Text Block"
+  },
+  "property-2": {
+    "scope": "quarto",
+    "prefix": "property-2",
+    "body": [
+      ":::{.callout-note}",
+      "::: {#cnj- .custom_problem }",
+      "",
+      ":::",
+      ":::",
+    ],
+    "description": "Gray Color Text Block"
+  },
+  "problem": {
+    "scope": "quarto",
+    "prefix": "problem",
+    "body": [
+      "::: {#exr- .custom_problem .blog-custom-border}",
+      "[エンタルピー]{.def-title}",
+      "",
+      ":::",
+    ],
+    "description": "problem-block"
+  },
+  "example": {
+    "prefix": "exm",
+    "body": [
+      "::: {#exm- .custom_problem }",
+      "[エンタルピー]{.def-title}",
+      "",
+      ":::",
+      "***",
+      "",
+    ],
+    "description": "example-block"
+  },
+  "theorem": {
+    "scope": "quarto",
+    "prefix": "thm",
+    "body": [
+      "::: {#thm- .custom_problem  .blog-custom-border}",
+      "[エンタルピー]{.def-title}",
+      "",
+      ":::",
+      "",
+      "",
+    ],
+    "description": "theorem-block"
+  },
+  "REMARKS": {
+    "scope": "quarto",
+    "prefix": "remarks",
+    "body": [
+      ":::: {.blog-custom-border}",
+      "<strong >📘 REMARKS</strong> <br>",
+      "",
+      "::::"
+    ],
+    "description": ""
+  },
+  "green tea break": {
+    "scope": "quarto",
+    "prefix": "green",
+    "body": [
+      "::: {.nte- .callout-tip icon=\"false\"}",
+      "# 🍵 Green Tea Break",
+      "",
+      ":::",
+    ],
+    "description": "adding column"
+  },
+  "property": {
+    "scope": "quarto",
+    "prefix": "property",
+    "body": [
+      ":::{.callout-note}",
+      "## Property",
+      ":::"
+    ],
+    "description": "property"
+  },
+  "solution-block": {
+    "prefix": "solution",
+    "body": [
+      "::: {.callout-note collapse=\"false\" icon=false}",
+      "## Solution",
+      "",
+      ":::",
+    ],
+    "description": "foldable solution block"
+  },
+  "proof-block": {
+    "prefix": "proof",
+    "body": [
+      "::: {.callout-note collapse=\"false\" icon=false}",
+      "## Proof",
+      "",
+      ":::",
+    ],
+    "description": "foldable proof block"
+  },
+  // --------------------------------------------
+  // math
+  // --------------------------------------------
+  "iid": {
+    "scope": "quarto, latex",
+    "prefix": "iid",
+    "body": [
+      "\\overset{\\mathrm{iid}}{\\sim} "
+    ],
+    "description": "i.i.d follow distribution"
+  },
+  "mathrm": {
+    "scope": "quarto, latex",
+    "prefix": "mathrm",
+    "body": [
+      "\\,\\mathrm"
+    ],
+    "description": "積分"
+  },
+  "eqref": {
+    "scope": "quarto",
+    "prefix": "eqref",
+    "body": [
+      "{#eq-}"
+    ],
+    "description": "tag"
+  },
+  // --------------------------------------------
+  // code general
+  // --------------------------------------------
+  "code-filename":{
+    "scope": "quarto",
+    "prefix": "code-filename",
+    "body": [
+      "```{.python filename=\"matplotlib.py\"}",
+      "",
+      "```"
+    ],
+    "description": "code-filename"
+  },
+  "code-unfold": {
+    "scope": "Python, R, Julia",
+    "prefix": "unfold",
+    "body": [
+      "#| code-fold: false"
+    ],
+    "description": ""
+  },
+  "center-plot": {
+    "scope": "quarto",
+    "prefix": "center",
+    "body": [
+      "::: {#fig-plot .center}",
+      ":::"
+    ],
+    "description": ""
+  },
+  "code-tab": {
+    "scope": "quarto",
+    "prefix": "code-tab",
+    "body": [
+      "::: {.panel-tabset group=\"language\"}",
+      "## Python",
+      "",
+      "```python",
+      "print('Hello, World!')",
+      "```",
+      "",
+      "## R",
+      "",
+      "```r",
+      "print('Hello, World!')",
+      "```",
+      "",
+      ":::"
+    ],
+    "description": ""
+  },
+  // --------------------------------------------
+  // Pseudocode
+  // --------------------------------------------
+  "pseudocode": {
+    "scope": "quarto",
+    "prefix": "pseudocode",
+    "body": [
+      "```pseudocode",
+      "#| html-indent-size: \"1.2em\"",
+      "#| html-comment-delimiter: \"//\"",
+      "#| html-line-number: true",
+      "#| html-line-number-punc: \":\"",
+      "#| html-no-end: false",
+      "#| pdf-placement: \"htb!\"",
+      "#| pdf-line-number: true",
+      "",
+      "\\begin{algorithm}",
+      "\\caption{Quicksort}",
+      "\\begin{algorithmic}",
+      "\\Procedure{Quicksort}{A, p, r}",
+        "\\If{p < r}",
+          "\\State q =  \\Call{Partition}{A, p, r}",
+          "\\State \\Call{Quicksort}{A, p, q - 1}",
+          "\\State \\Call{Quicksort}{A, q + 1, r}",
+        "\\EndIf",
+      "\\EndProcedure",
+      "\\Procedure{Partition}{A, p, r}",
+        "\\State x = A[r]",
+        "\\State i = p - 1",
+        "\\For{j = p \\To r - 1}",
+          "\\If{A[j] < x}",
+            "\\State i = i + 1",
+            "\\State exchange",
+            "A[i] with     A[j]",
+          "\\EndIf",
+          "\\State exchange A[i] with A[r]",
+        "\\EndFor",
+      "\\EndProcedure",
+      "\\end{algorithmic}",
+      "\\end{algorithm}",
+      "```"
+    ],
+    "description": ""
+  },
+}
