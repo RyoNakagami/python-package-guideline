@@ -1,0 +1,19 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        name: check-added-large-files (default <=1MB)
+        args: ['--maxkb=1024']
+        exclude: '\.csv$'
+      - id: check-added-large-files
+        name: check-added-large-files (HTML <=2MB)
+        args: ['--maxkb=2048']
+        files: '\.html$'
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.15
+    hooks:
+      - id: ruff-check      # linter
+        args: [ --fix ]
+      - id: ruff-format     # formatter

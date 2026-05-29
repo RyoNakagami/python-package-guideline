@@ -1,0 +1,154 @@
+/* css styles */
+.quarto-figure figcaption {
+  text-align: center;
+}
+
+.callout.callout-style-default div.callout-body {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  font-size: var(--r-main-font-size);
+}
+
+.callout.callout-style-default div.callout-header {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  font-size: 1.1rem;
+}
+
+.table.caption-top.table {
+  margin-bottom: 1rem !important;
+  margin-top: 1rem !important;
+}
+
+/* update default style */
+
+li {
+  line-height: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+h3 {
+  font-size: 1.45rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+
+/* --------------------------*/
+/*   contents style          */
+/* --------------------------*/
+.center-content {
+  text-align: center;
+}
+
+.mini-section {
+  font-weight: bold;
+  font-size: 1.1em;
+  align-items: center;
+}
+
+.mini-section::before {
+  content: "▶";
+  margin-right: 0.4em;
+}
+
+.border-bottom-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.2rem solid #1a1a1a; /* 線の色と太さを調整 */
+  padding-bottom: 0.2em; /* 少し余白を足すと見やすくなる */
+  margin-bottom: 0.5em; /* 次の要素とのスペースも確保 */
+  width: 97.5%;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.def-title{
+  font-weight: bold;
+}
+
+.def-title::before {
+  content: ": ";
+  font-weight: normal; /* optional: keep the colon unbolded */
+}
+
+.def-title-no-before{
+  font-weight: bold;
+}
+
+.roman-list ul {
+  list-style: none;       /* デフォルトのドットを消す */
+  counter-reset: roman;   /* カウンタリセット */
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.roman-list ul {
+  list-style: none;       /* デフォルトのドットを消す */
+  counter-reset: roman;   /* カウンタリセット */
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.roman-list li {
+  counter-increment: roman;
+  position: relative;
+  margin: 0.5rem 0 0.5rem 0;
+  padding-left: 4ch;      /* ラベル分の余白 */
+  line-height: 1.5;
+  padding-top: 0rem;
+}
+
+.roman-list li::before {
+  content: "(" counter(roman, lower-roman) ") ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.5em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* --------------------------*/
+/*          MathJax          */
+/* --------------------------*/
+
+.MathJax {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.MathJax_Display {
+  overflow: clip visible !important;
+}
+
+.math-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 100%;
+}
+
+
+/* --------------------------*/
+/*          Table            */
+/* --------------------------*/
+/* Remove top border from header cells */
+.no-border-top-table table,
+.no-border-top-table table th,
+.no-border-top-table table td {
+  border-top: none;
+}
+
+.space-list-025 li {
+  margin-bottom: 0.25rem;
+}
+
+/* sidebar overlayの対策 */
+.quarto-listing-table {
+  display: block !important;
+}
