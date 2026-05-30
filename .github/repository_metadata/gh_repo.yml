@@ -1,10 +1,11 @@
 meta-data:
-  repository_name: python-package-guidline
-  visibility: private
+  repository_name: python-package-guideline
+  visibility: public
   org-name: RyoNakagami
   tag:
     - uv
     - Python
+    - pytest
   description: |
     xxxxx
   homepage: null

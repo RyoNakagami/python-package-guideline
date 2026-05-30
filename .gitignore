@@ -33,6 +33,8 @@ config/
 *.bak
 *.old
 *.html
+*.quarto_ipynb
+*.quarto_ipynb*
 
 # ---- Logs ----
 logs/
@@ -72,3 +74,6 @@ bfg_check_list/
 **/*.quarto_ipynb
 
 /.luarc.json
+
+# MCP generated files
+rules-catalog.json
