@@ -1,0 +1,132 @@
+---
+author: "Ryo Nakagami"
+date: "2025-11-22"
+date-modified: "last-modified"
+number_sections: false
+code-fold: false
+error: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+---
+
+# 用語集 {.unnumbered}
+
+Pythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に @pypa_packaging, @PEP561 をベースに記述しています．
+
+## プログラミングスタイル
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: スパゲッティコード
+    description: |
+      ほとんど誰にも理解できないほど雑然として整理されていないソースコード
+
+  - def: 名前空間 (namespace)
+    description: |
+      名前からオブジェクトへの対応付け (mapping) を管理する抽象的な空間．ほとんどの名前空間は，現状では Python の辞書として実装されている．異なった名前空間にある名前の間には全く関係がない，二つの別々のモジュールの両方で関数 `maximize` という関数を定義することができ，定義自体は混同されることはない．
+      「`Namespaces are one honking great idea -- let's do more of those!`」
+
+```
+
+:::
+
+## パッケージ全般
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: モジュール
+    description: |
+      Pythonコードをまとめたファイルやスタブファイル．パッケージ内のファイルもモジュールと呼ばれる．インポート時は `import module` と記述する．
+
+  - def: パッケージ
+    description: |
+      複数のモジュールを名前空間としてまとめたディレクトリ．`__init__.py` ファイルを含むことでPythonからパッケージとして認識される．
+      モジュールを整理・階層化するために使われる．インポート時は `import package.module` と記述する．
+
+  - def: ディストリビューション
+    description: |
+      Pythonパッケージを公開・配布するためにパッケージングされたファイル群．PEP 426に準拠する．
+      通常は１ディストリビューション・１パッケージだが，複数パッケージを含む場合がある．
+
+  - def: built distribution(ビルド済配布物)
+    description: |
+      パッケージをインストールする際に必要のあるファイル群をそのまま含んでいるもの．Wheelフォーマットが代表例．
+
+  - def: source distribution(ソースコード配布物)
+    description: |
+      パッケージのソースコードを含む形式．ビルド前の状態で配布されるため，インストール時に環境に応じてビルドされる．
+```
+
+:::
+
+## 環境系
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: PyPI
+    description: |
+      <a href="https://pypi.org/">Python Package Index</a>の略．Python の公式パッケージリポジトリで，Python のライブラリやフレームワークを公開・配布するための場所．
+
+  - def: TestPyPI
+    description: |
+      <a href="https://test.pypi.org/">TestPyPI</a>は PyPI のテスト用リポジトリ．
+```
+
+:::
+
+## ファイル形式
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: __init.py__
+    description: |
+      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う
+
+  - def: setup.py
+    description: |
+      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．
+      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．
+      `python install setup.py` でインストール
+
+  - def: pyproject.toml
+    description: |
+      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．
+
+  - def: eggフォーマット
+    description: |
+      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．
+
+  - def: Wheelフォーマット
+    description: |
+      標準的なビルド済配布物フォーマット．
+
+  - def: stubs
+    description: |
+      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される。
+```
+
+:::
+
+## Testing
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: pytest
+    description: |
+      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．
+
+```
+
+:::

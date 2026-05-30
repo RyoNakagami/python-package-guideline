@@ -1,0 +1,32 @@
+---
+title: "はじめてのpytest"
+author: "Ryo Nakagami"
+date: "2024-11-11"
+date-modified: last-modified
+number_sections: false
+code-fold: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+engine: knitr
+---
+
+## なぜpytestを使うのか？
+
+Pythonが提供するユニットテストフレームワークとして, `unittest`がありますが，`unittest`と比べ`pytest`は以下のようなメリットがあります．
+
+- command-line tool
+- Classは必要に応じて作成すれば良く，小規模なテストについてはテスト関数の定義のみで十分
+- `assert` 文がシンプル
+- traceback機能が充実しており，また不必要ならばoffすることができる
+
+
+## `assert`文
+
+`pytest`を用いたunit testの基本構文を理解するために以下のコードを見てみます．
+
+```{.python}
+def test_passing():
+    assert (1, 2, 3) == (1, 2, 3)
+```
