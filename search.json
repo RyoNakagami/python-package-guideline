@@ -1,0 +1,196 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Python Package Guideline",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html",
+    "title": "1  src layout vs flat layout",
+    "section": "",
+    "text": "TL;DR",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#tldr",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#tldr",
+    "title": "1  src layout vs flat layout",
+    "section": "",
+    "text": "PKG-LAYOUT-001 (required): 新規パッケージは src layout を採用する。 テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。\nPKG-LAYOUT-002 (required): tests は src の外に置く。 配布パッケージにテストコードを含めないため。\nPKG-LAYOUT-003 (recommended): flat から移行する際はビルド設定も同時に更新する。 ディレクトリ移動だけではビルドが壊れる。",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#src-layout-とは",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#src-layout-とは",
+    "title": "1  src layout vs flat layout",
+    "section": "src layout とは",
+    "text": "src layout とは\nsrc layout は、import 可能なパッケージ本体を src/ ディレクトリの下に置く構成である。 flat layout（パッケージをリポジトリ直下に置く）と対比される。\n\nmypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\nポイントは 2 つ。import 対象は src/mypackage/ の下にあり、tests/ は src/ の外にある。",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#なぜ-src-layout-か",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#なぜ-src-layout-か",
+    "title": "1  src layout vs flat layout",
+    "section": "なぜ src layout か",
+    "text": "なぜ src layout か\nflat layout の最大の問題は、リポジトリルートが sys.path に入ってしまうことである。 これにより「パッケージをインストールしていないのに import が通る」状態が生まれ、 pyproject.toml のパッケージング設定にミスがあっても気づけない。\nsrc layout では、テストは必ず install 済みのパッケージに対して実行される。 editable install (pip install -e . や uv pip install -e .) を挟むことで、 配布物と同じ import 経路でテストが走り、include 漏れや相対 import の崩れが CI の段階で顕在化する。\n\n# src layout では editable install してからテストする\nuv pip install -e .\nuv run pytest\n\n# これにより tests/ は install 済みの mypackage を import する\n# (リポジトリルート経由ではない)",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#pyproject.toml-の設定",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#pyproject.toml-の設定",
+    "title": "1  src layout vs flat layout",
+    "section": "pyproject.toml の設定",
+    "text": "pyproject.toml の設定\nsrc layout を採用する場合、ビルドバックエンドにパッケージの場所を教える必要がある。\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\nflat layout から移行する場合、この packages 指定の更新を忘れると wheel が空になったり、誤ったディレクトリを取り込んだりする。",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#anti-pattern",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#anti-pattern",
+    "title": "1  src layout vs flat layout",
+    "section": "Anti-pattern",
+    "text": "Anti-pattern\n\n# NG: flat layout。新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く、リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\nこの構成では、mypackage を install しなくても リポジトリルートから import できてしまう。テストが install 済み パッケージを検証していないため、配布後に「import できない」事故が起きる。",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#例外",
+    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#例外",
+    "title": "1  src layout vs flat layout",
+    "section": "例外",
+    "text": "例外\nC 拡張モジュールやビルド成果物をリポジトリ直下に置く必要がある特殊な構成では、 src layout を厳密に適用できないことがある。その場合は PKG-LAYOUT-003 に従い、 ビルド設定でパッケージ探索パスを明示的に管理する。",
+    "crumbs": [
+      "packaging",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/index.html",
+    "href": "book/004_testing/index.html",
+    "title": "はじめてのpytest",
+    "section": "",
+    "text": "なぜpytestを使うのか？\nPythonが提供するユニットテストフレームワークとして, unittestがありますが，unittestと比べpytestは以下のようなメリットがあります．",
+    "crumbs": [
+      "はじめてのpytest"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/index.html#なぜpytestを使うのか",
+    "href": "book/004_testing/index.html#なぜpytestを使うのか",
+    "title": "はじめてのpytest",
+    "section": "",
+    "text": "command-line tool\nClassは必要に応じて作成すれば良く，小規模なテストについてはテスト関数の定義のみで十分\nassert 文がシンプル\ntraceback機能が充実しており，また不必要ならばoffすることができる",
+    "crumbs": [
+      "はじめてのpytest"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/index.html#assert文",
+    "href": "book/004_testing/index.html#assert文",
+    "title": "はじめてのpytest",
+    "section": "assert文",
+    "text": "assert文\npytestを用いたunit testの基本構文を理解するために以下のコードを見てみます．\ndef test_passing():\n    assert (1, 2, 3) == (1, 2, 3)",
+    "crumbs": [
+      "はじめてのpytest"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/posts/test.html",
+    "href": "book/004_testing/posts/test.html",
+    "title": "2  pytest and Raise Error",
+    "section": "",
+    "text": "import pytest",
+    "crumbs": [
+      "はじめてのpytest",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>pytest and Raise Error</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html",
+    "href": "book/999_appendix/glossary.html",
+    "title": "用語集",
+    "section": "",
+    "text": "プログラミングスタイル\nPythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に @pypa_packaging, @PEP561 をベースに記述しています．",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html#プログラミングスタイル",
+    "href": "book/999_appendix/glossary.html#プログラミングスタイル",
+    "title": "用語集",
+    "section": "",
+    "text": "glossary:\n  - def: スパゲッティコード\n    description: |\n      ほとんど誰にも理解できないほど雑然として整理されていないソースコード\n\n  - def: 名前空間 (namespace)\n    description: |\n      名前からオブジェクトへの対応付け (mapping) を管理する抽象的な空間．ほとんどの名前空間は，現状では Python の辞書として実装されている．異なった名前空間にある名前の間には全く関係がない，二つの別々のモジュールの両方で関数 `maximize` という関数を定義することができ，定義自体は混同されることはない．\n      「`Namespaces are one honking great idea -- let's do more of those!`」",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html#パッケージ全般",
+    "href": "book/999_appendix/glossary.html#パッケージ全般",
+    "title": "用語集",
+    "section": "パッケージ全般",
+    "text": "パッケージ全般\n\nglossary:\n  - def: モジュール\n    description: |\n      Pythonコードをまとめたファイルやスタブファイル．パッケージ内のファイルもモジュールと呼ばれる．インポート時は `import module` と記述する．\n\n  - def: パッケージ\n    description: |\n      複数のモジュールを名前空間としてまとめたディレクトリ．`__init__.py` ファイルを含むことでPythonからパッケージとして認識される．\n      モジュールを整理・階層化するために使われる．インポート時は `import package.module` と記述する．\n\n  - def: ディストリビューション\n    description: |\n      Pythonパッケージを公開・配布するためにパッケージングされたファイル群．PEP 426に準拠する．\n      通常は１ディストリビューション・１パッケージだが，複数パッケージを含む場合がある．\n\n  - def: built distribution(ビルド済配布物)\n    description: |\n      パッケージをインストールする際に必要のあるファイル群をそのまま含んでいるもの．Wheelフォーマットが代表例．\n\n  - def: source distribution(ソースコード配布物)\n    description: |\n      パッケージのソースコードを含む形式．ビルド前の状態で配布されるため，インストール時に環境に応じてビルドされる．",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html#環境系",
+    "href": "book/999_appendix/glossary.html#環境系",
+    "title": "用語集",
+    "section": "環境系",
+    "text": "環境系\n\nglossary:\n  - def: PyPI\n    description: |\n      &lt;a href=\"https://pypi.org/\"&gt;Python Package Index&lt;/a&gt;の略．Python の公式パッケージリポジトリで，Python のライブラリやフレームワークを公開・配布するための場所．\n\n  - def: TestPyPI\n    description: |\n      &lt;a href=\"https://test.pypi.org/\"&gt;TestPyPI&lt;/a&gt;は PyPI のテスト用リポジトリ．",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html#ファイル形式",
+    "href": "book/999_appendix/glossary.html#ファイル形式",
+    "title": "用語集",
+    "section": "ファイル形式",
+    "text": "ファイル形式\n\nglossary:\n  - def: __init.py__\n    description: |\n      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う\n\n  - def: setup.py\n    description: |\n      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．\n      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．\n      `python install setup.py` でインストール\n\n  - def: pyproject.toml\n    description: |\n      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．\n\n  - def: eggフォーマット\n    description: |\n      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．\n\n  - def: Wheelフォーマット\n    description: |\n      標準的なビルド済配布物フォーマット．\n\n  - def: stubs\n    description: |\n      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される。",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/glossary.html#testing",
+    "href": "book/999_appendix/glossary.html#testing",
+    "title": "用語集",
+    "section": "Testing",
+    "text": "Testing\n\nglossary:\n  - def: pytest\n    description: |\n      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  }
+]

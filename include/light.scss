@@ -1,0 +1,164 @@
+/*-- scss:rules --*/
+.blog-custom-border {
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 0em;
+  border-style: solid;
+  border-color: #00008b;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*custom sections*/
+.checkmark-header {
+  font-size: 1.25rem;
+  font-weight: bolder;
+  opacity: 0.9;
+  display: inline !important;
+}
+
+.checkmark-header::before {
+  content: "✔";
+  background-color: #0d6efd;
+  color: #fff;
+  font-size: 1.25rem;
+  margin-right: 0.25em; /* small spacing between checkmark and text */
+  display: inline !important;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+/*inline markers*/
+.good::before {
+  content: "✅";
+  color: #0d6efd;
+  margin-right: 0.25rem; /* small spacing between checkmark and text */
+  display: inline !important;
+}
+
+.so-so::before {
+  content: "▲";
+  color: #ffcc00;
+  margin-right: 0.25rem; /* small spacing between checkmark and text */
+  display: inline !important;
+}
+
+.bad::before {
+  content: "❌";
+  color: #ff0000;
+  margin-right: 0.25rem; /* small spacing between checkmark and text */
+  display: inline !important;
+}
+
+/*style*/
+
+.regmonkey-bold {
+  color: #0d6efd;
+  font-weight: bold; /*Mckinsey green*/
+}
+
+/*custom block*/
+.tips-block {
+  border-left: 0.3em solid #0d6efd;
+  color: #0d6efd;
+  padding: 0.25em !important;
+  font-size: 1.25rem;
+  font-weight: bold !important;
+  display: flex;
+  vertical-align: middle;
+}
+
+.tips-block p {
+  padding: 0rem 0.25em;
+  margin: 0;
+}
+
+.tips-block-small {
+  border-left: 0.3em solid #0d6efd;
+  color: #0d6efd;
+  padding: 0.25em !important;
+  font-size: 1rem;
+  font-weight: bold !important;
+  display: flex;
+  vertical-align: middle;
+}
+
+.tips-block-small p {
+  padding: 0rem 0.25em;
+  margin: 0;
+}
+
+
+/*Tables setup*/
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  vertical-align: middle;
+  border: none !important;
+}
+
+.custom-table th {
+  background-color: transparent;
+  color: #000000;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+/* Add underline (bottom border) below Header 2 and Header 3 */
+.custom-table th:nth-child(2)::after,
+.custom-table th:nth-child(n + 2)::after {
+  content: "";
+  display: block;
+  width: 100%; /* Make the underline shorter than the column width (adjust percentage as needed) */
+  margin: 5px auto 0;
+  border-bottom: 3px solid #333; /* Add a solid underline */
+}
+
+.custom-table td {
+  background-color: transparent;
+}
+
+.custom-table tr:nth-child(0),
+.custom-table th:nth-child(n + 2) td {
+  background-color: transparent;
+}
+
+.custom-table tr:hover td {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Dotted separation between rows */
+.custom-table tr {
+  border-bottom: 1px solid #ccc; /* Dotted line separating rows */
+}
+
+.custom-table td {
+  border-right: 1px solid transparent !important; /* Add vertical line between columns */
+  border-left: 1px solid transparent !important; /* Add vertical line between columns */
+}
+
+.custom-table thead tr {
+  border-bottom: none;
+}
+
+/* Apply black background to the first column */
+.custom-table td:nth-child(1) {
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    transparent 3%,
+    #0e3666 3%,
+    #0e3666 97%,
+    transparent 97%,
+    transparent 100%
+  );
+  text-align: center !important;
+  font-weight: bold !important;
+  color: white; /* Change text color to white for contrast */
+}

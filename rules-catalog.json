@@ -1,0 +1,222 @@
+{
+  "version": "1.3",
+  "generated_at": "2026-05-30T06:20:06.480432+00:00",
+  "site_url": "https://ryonakagami.github.io/python-package-guideline",
+  "rules": [
+    {
+      "id": "PKG-LAYOUT-001",
+      "statement": "新規パッケージは src layout を採用する",
+      "severity": "required",
+      "maturity": "stable",
+      "rationale": "テストが install 済みのパッケージに対して実行されるため、\nパッケージング設定の漏れ（include 漏れ、相対 import の崩れ）を\n早期に検出できる。flat layout ではリポジトリルートが\nsys.path に入り、未インストールでも import が通ってしまうため、\n配布後に初めて壊れる事故が起きやすい。\n",
+      "tldr": "- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する。\n  テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。",
+      "phase": [
+        "init",
+        "packaging"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml",
+          "src/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "structural",
+      "chapter_slug": "src-layout",
+      "chapter_path": "book/001_package/posts/src-layout-vs-flat-layout.qmd",
+      "chapter_url": "https://ryonakagami.github.io/python-package-guideline/book/001_package/posts/src-layout-vs-flat-layout.html",
+      "related_rules": [
+        {
+          "id": "PKG-VERSION-001",
+          "type": "prerequisite"
+        },
+        {
+          "id": "TEST-LAYOUT-001",
+          "type": "contrasts"
+        }
+      ],
+      "exceptions": [
+        {
+          "condition": "C 拡張やビルド成果物をリポジトリ直下に置く必要がある特殊構成",
+          "ref_rule": "PKG-LAYOUT-003"
+        }
+      ],
+      "mcp_block_labels": [
+        "src-layout-structure",
+        "src-layout-editable-install",
+        "src-layout-pyproject",
+        "flat-layout-antipattern"
+      ],
+      "vector_text": "新規パッケージは src layout を採用する\nテストが install 済みのパッケージに対して実行されるため、\nパッケージング設定の漏れ（include 漏れ、相対 import の崩れ）を\n早期に検出できる。flat layout ではリポジトリルートが\nsys.path に入り、未インストールでも import が通ってしまうため、\n配布後に初めて壊れる事故が起きやすい。\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する。\n  テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。"
+    },
+    {
+      "id": "PKG-LAYOUT-002",
+      "statement": "tests ディレクトリは src の外に置く",
+      "severity": "required",
+      "maturity": "stable",
+      "rationale": "テストコードを配布パッケージに含めないため。src の外に置けば\nビルド対象から自然に除外され、wheel が不要なテストで膨らまない。\n",
+      "tldr": "- **PKG-LAYOUT-002** (required): tests は src の外に置く。\n  配布パッケージにテストコードを含めないため。",
+      "phase": [
+        "init",
+        "packaging"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml",
+          "src/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "structural",
+      "chapter_slug": "src-layout",
+      "chapter_path": "book/001_package/posts/src-layout-vs-flat-layout.qmd",
+      "chapter_url": "https://ryonakagami.github.io/python-package-guideline/book/001_package/posts/src-layout-vs-flat-layout.html",
+      "related_rules": [
+        {
+          "id": "PKG-VERSION-001",
+          "type": "prerequisite"
+        },
+        {
+          "id": "TEST-LAYOUT-001",
+          "type": "contrasts"
+        }
+      ],
+      "exceptions": [],
+      "mcp_block_labels": [
+        "src-layout-structure",
+        "flat-layout-antipattern"
+      ],
+      "vector_text": "tests ディレクトリは src の外に置く\nテストコードを配布パッケージに含めないため。src の外に置けば\nビルド対象から自然に除外され、wheel が不要なテストで膨らまない。\n\n- **PKG-LAYOUT-002** (required): tests は src の外に置く。\n  配布パッケージにテストコードを含めないため。"
+    },
+    {
+      "id": "PKG-LAYOUT-003",
+      "statement": "既存の flat layout を移行する場合はビルド設定も同時に更新する",
+      "severity": "recommended",
+      "maturity": "stable",
+      "rationale": "ディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n",
+      "tldr": "- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。",
+      "phase": [
+        "init",
+        "packaging"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml",
+          "src/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "structural",
+      "chapter_slug": "src-layout",
+      "chapter_path": "book/001_package/posts/src-layout-vs-flat-layout.qmd",
+      "chapter_url": "https://ryonakagami.github.io/python-package-guideline/book/001_package/posts/src-layout-vs-flat-layout.html",
+      "related_rules": [
+        {
+          "id": "PKG-VERSION-001",
+          "type": "prerequisite"
+        },
+        {
+          "id": "TEST-LAYOUT-001",
+          "type": "contrasts"
+        }
+      ],
+      "exceptions": [],
+      "mcp_block_labels": [
+        "src-layout-pyproject"
+      ],
+      "vector_text": "既存の flat layout を移行する場合はビルド設定も同時に更新する\nディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。"
+    }
+  ],
+  "chapters": {
+    "src-layout": {
+      "slug": "src-layout",
+      "title": "src layout vs flat layout",
+      "path": "book/001_package/posts/src-layout-vs-flat-layout.qmd",
+      "url": "https://ryonakagami.github.io/python-package-guideline/book/001_package/posts/src-layout-vs-flat-layout.html",
+      "phase": [
+        "init",
+        "packaging"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml",
+          "src/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "structural",
+      "mcp_block_labels": [
+        "src-layout-structure",
+        "src-layout-editable-install",
+        "src-layout-pyproject",
+        "flat-layout-antipattern"
+      ]
+    }
+  },
+  "mcp_blocks": {
+    "src-layout-structure": {
+      "label": "src-layout-structure",
+      "rule_ids": [
+        "PKG-LAYOUT-001",
+        "PKG-LAYOUT-002"
+      ],
+      "content": "```text\nmypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\n```\n\nポイントは 2 つ。import 対象は `src/mypackage/` の下にあり、`tests/` は `src/` の外にある。",
+      "chapter_slug": "src-layout"
+    },
+    "src-layout-editable-install": {
+      "label": "src-layout-editable-install",
+      "rule_ids": [
+        "PKG-LAYOUT-001"
+      ],
+      "content": "```bash\n# src layout では editable install してからテストする\nuv pip install -e .\nuv run pytest\n\n# これにより tests/ は install 済みの mypackage を import する\n# (リポジトリルート経由ではない)\n```",
+      "chapter_slug": "src-layout"
+    },
+    "src-layout-pyproject": {
+      "label": "src-layout-pyproject",
+      "rule_ids": [
+        "PKG-LAYOUT-001",
+        "PKG-LAYOUT-003"
+      ],
+      "content": "```toml\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\n```\n\nflat layout から移行する場合、この `packages` 指定の更新を忘れると\nwheel が空になったり、誤ったディレクトリを取り込んだりする。",
+      "chapter_slug": "src-layout"
+    },
+    "flat-layout-antipattern": {
+      "label": "flat-layout-antipattern",
+      "rule_ids": [
+        "PKG-LAYOUT-001",
+        "PKG-LAYOUT-002"
+      ],
+      "content": "```text\n# NG: flat layout。新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く、リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\n```\n\nこの構成では、`mypackage` を install しなくても\nリポジトリルートから import できてしまう。テストが install 済み\nパッケージを検証していないため、配布後に「import できない」事故が起きる。",
+      "chapter_slug": "src-layout"
+    }
+  },
+  "phase_inference": {
+    "pyproject.toml": [
+      "init",
+      "packaging"
+    ],
+    "src/**": [
+      "init",
+      "packaging"
+    ],
+    "tests/**": [
+      "init",
+      "packaging"
+    ]
+  },
+  "phases": [
+    "init",
+    "packaging"
+  ],
+  "categories": [
+    "PKG"
+  ]
+}
