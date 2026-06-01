@@ -27,7 +27,7 @@ import yaml
 # 定数
 # ---------------------------------------------------------------------------
 
-CATALOG_VERSION = "1.3"
+CATALOG_VERSION = "1.0"
 
 # Rule ID 形式の既定パターン。SST は schema-config.yml の constraints.rule_id_pattern。
 # CLI 層が schema-config から読んで build_catalog に渡すが，
