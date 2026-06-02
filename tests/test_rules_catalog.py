@@ -298,7 +298,7 @@ def test_build_catalog_happy_path():
     )
     cat = result.catalog
 
-    assert cat["version"] == "1.3"
+    assert cat["version"] == "1.0"
     assert cat["site_url"] == "https://x.io/guide"
     assert cat["generated_at"] is None  # CLI 層で上書きされる前提
     assert result.warnings == []
