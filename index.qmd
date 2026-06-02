@@ -3,3 +3,43 @@
 This is a Quarto book.
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.
+
+## MCP setup
+
+```bash
+claude mcp add --transport stdio python-guideline \
+  --scope user \
+  --env CATALOG_URL=https://ryonakagami.github.io/python-package-guideline/rules-catalog.json \
+  -- quarto-book-mcp
+```
+
+`~.claude.json`
+
+```json
+  "mcpServers": {
+    "python-guideline": {
+      "type": "stdio",
+      "command": "quarto-book-mcp",
+      "args": [],
+      "env": {
+        "CATALOG_URL": "https://ryonakagami.github.io/python-package-guideline/rules-catalog.json"
+      }
+    }
+  }
+```
+
+Then, claude codeを起動してmcp接続設定を完了した後に
+
+```bash
+python-guideline の ping を呼んで
+```
+
+then
+
+```
+● 応答が返ってきました。
+
+  pong (catalog v1.0, 3 rules)
+
+  カタログバージョン v1.0、ルール数 3 で正常に接続できています。
+```
