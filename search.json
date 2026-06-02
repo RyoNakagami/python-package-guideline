@@ -10,6 +10,16 @@
     ]
   },
   {
+    "objectID": "index.html#mcp-setup",
+    "href": "index.html#mcp-setup",
+    "title": "Python Package Guideline",
+    "section": "MCP setup",
+    "text": "MCP setup\nclaude mcp add --transport stdio python-guideline \\\n  --scope user \\\n  --env CATALOG_URL=https://ryonakagami.github.io/python-package-guideline/rules-catalog.json \\\n  -- quarto-book-mcp\n~.claude.json\n  \"mcpServers\": {\n    \"python-guideline\": {\n      \"type\": \"stdio\",\n      \"command\": \"quarto-book-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"CATALOG_URL\": \"https://ryonakagami.github.io/python-package-guideline/rules-catalog.json\"\n      }\n    }\n  }\nThen, claude codeを起動してmcp接続設定を完了した後に\npython-guideline の ping を呼んで\nthen\n● 応答が返ってきました。\n\n  pong (catalog v1.0, 3 rules)\n\n  カタログバージョン v1.0、ルール数 3 で正常に接続できています。",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
     "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html",
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html",
     "title": "1  src layout vs flat layout",
