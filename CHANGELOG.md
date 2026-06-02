@@ -5,6 +5,21 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-06-02
+
+### Changed
+
+- **BREAKING**: Moved the rules catalog tooling out of this repository into the `scripts` git submodule (`https://github.com/RyoNakagami/quarto-mcp-book-scripts.git`). Cloning now requires `git submodule update --init` to obtain the scripts.
+- Relocated `schema-config.yml` from `scripts/` to the repository root.
+
+### Removed
+
+- In-tree scripts now provided by the `scripts` submodule: `scripts/rules_catalog.py`, `scripts/build-rules-catalog.py`, and `scripts/lint-rules.py`.
+
+### Fixed
+
+- Corrected the documented catalog schema version in `RULES_SCHEMA.md` to `1.0`.
+
 ## [1.0.0] - 2026-06-02
 
 ### Added

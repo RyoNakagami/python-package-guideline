@@ -351,7 +351,7 @@ src-layout-example
 - `applies-to` から `phase_inference` テーブル (glob → phase) を集約
 - `chapter_url` を `_quarto.yml` の `site-url` から生成
 
-catalog のスキーマバージョンは現在 `1.3`．
+catalog のスキーマバージョンは現在 `1.0`．
 
 ---
 
