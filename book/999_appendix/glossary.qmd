@@ -113,7 +113,19 @@ glossary:
   - def: stubs
     description: |
       型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される。
+```
 
+:::
+
+## Testing
+
+:::{.glossary-container}
+
+```yaml
+glossary:
+  - def: pytest
+    description: |
+      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．
 
 ```
 

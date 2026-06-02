@@ -1,0 +1,18 @@
+---
+title: "pytest and Raise Error"
+author: "Ryo Nakagami"
+date: "2024-11-11"
+date-modified: last-modified
+number_sections: false
+code-fold: false
+error: true
+comments:
+    utterances:
+         repo: RyoNakagami/statistics-for-regression-monkey
+         label: discussion
+---
+
+
+```{python}
+import pytest
+```

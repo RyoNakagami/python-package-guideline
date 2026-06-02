@@ -1,0 +1,140 @@
+---
+title: "src layout vs flat layout"
+slug: src-layout
+phase: [init, packaging]
+applies-to:
+  primary:
+    - pyproject.toml
+    - "src/**"
+  contextual:
+    - "tests/**"
+rule-type: structural
+rules:
+  - id: PKG-LAYOUT-001
+    statement: 新規パッケージは src layout を採用する
+    severity: required
+    maturity: stable
+    rationale: |
+      テストが install 済みのパッケージに対して実行されるため、
+      パッケージング設定の漏れ（include 漏れ、相対 import の崩れ）を
+      早期に検出できる。flat layout ではリポジトリルートが
+      sys.path に入り、未インストールでも import が通ってしまうため、
+      配布後に初めて壊れる事故が起きやすい。
+    exceptions:
+      - condition: C 拡張やビルド成果物をリポジトリ直下に置く必要がある特殊構成
+        ref_rule: PKG-LAYOUT-003
+  - id: PKG-LAYOUT-002
+    statement: tests ディレクトリは src の外に置く
+    severity: required
+    maturity: stable
+    rationale: |
+      テストコードを配布パッケージに含めないため。src の外に置けば
+      ビルド対象から自然に除外され、wheel が不要なテストで膨らまない。
+  - id: PKG-LAYOUT-003
+    statement: 既存の flat layout を移行する場合はビルド設定も同時に更新する
+    severity: recommended
+    maturity: stable
+    rationale: |
+      ディレクトリを動かすだけでは不十分で、
+      tool.hatch.build.targets などのパッケージ探索パスを
+      src/ に合わせて更新しないとビルドが壊れる。
+related-rules:
+  - id: PKG-VERSION-001
+    type: prerequisite
+  - id: TEST-LAYOUT-001
+    type: contrasts
+---
+
+## TL;DR
+
+- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する。
+  テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。
+- **PKG-LAYOUT-002** (required): tests は src の外に置く。
+  配布パッケージにテストコードを含めないため。
+- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。
+  ディレクトリ移動だけではビルドが壊れる。
+
+---
+
+## src layout とは
+
+src layout は、import 可能なパッケージ本体を `src/` ディレクトリの下に置く構成である。
+flat layout（パッケージをリポジトリ直下に置く）と対比される。
+
+::: {.allowed-mcp-read label="src-layout-structure" rules="PKG-LAYOUT-001,PKG-LAYOUT-002"}
+```text
+mypackage/
+├── pyproject.toml
+├── src/
+│   └── mypackage/
+│       ├── __init__.py
+│       └── core.py
+└── tests/
+    └── test_core.py
+```
+
+ポイントは 2 つ。import 対象は `src/mypackage/` の下にあり、`tests/` は `src/` の外にある。
+:::
+
+## なぜ src layout か
+
+flat layout の最大の問題は、リポジトリルートが `sys.path` に入ってしまうことである。
+これにより「パッケージをインストールしていないのに import が通る」状態が生まれ、
+`pyproject.toml` のパッケージング設定にミスがあっても気づけない。
+
+src layout では、テストは必ず install 済みのパッケージに対して実行される。
+editable install (`pip install -e .` や `uv pip install -e .`) を挟むことで、
+配布物と同じ import 経路でテストが走り、include 漏れや相対 import の崩れが
+CI の段階で顕在化する。
+
+::: {.allowed-mcp-read label="src-layout-editable-install" rules="PKG-LAYOUT-001"}
+```bash
+# src layout では editable install してからテストする
+uv pip install -e .
+uv run pytest
+
+# これにより tests/ は install 済みの mypackage を import する
+# (リポジトリルート経由ではない)
+```
+:::
+
+## pyproject.toml の設定
+
+src layout を採用する場合、ビルドバックエンドにパッケージの場所を教える必要がある。
+
+::: {.allowed-mcp-read label="src-layout-pyproject" rules="PKG-LAYOUT-001,PKG-LAYOUT-003"}
+```toml
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mypackage"]
+```
+
+flat layout から移行する場合、この `packages` 指定の更新を忘れると
+wheel が空になったり、誤ったディレクトリを取り込んだりする。
+:::
+
+## Anti-pattern
+
+::: {.allowed-mcp-read label="flat-layout-antipattern" rules="PKG-LAYOUT-001,PKG-LAYOUT-002"}
+```text
+# NG: flat layout。新規パッケージでは避ける
+mypackage/
+├── pyproject.toml
+├── mypackage/          # src/ が無く、リポジトリルートに直置き
+│   └── __init__.py
+└── test_core.py        # tests/ ディレクトリも無く直置き
+```
+
+この構成では、`mypackage` を install しなくても
+リポジトリルートから import できてしまう。テストが install 済み
+パッケージを検証していないため、配布後に「import できない」事故が起きる。
+:::
+
+## 例外
+
+C 拡張モジュールやビルド成果物をリポジトリ直下に置く必要がある特殊な構成では、
+src layout を厳密に適用できないことがある。その場合は PKG-LAYOUT-003 に従い、
+ビルド設定でパッケージ探索パスを明示的に管理する。
