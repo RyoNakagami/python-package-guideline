@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/004_testing/posts/test.html" rel="next">
+<link href="../../book/004_testing/posts/00-getting-started-with-pytest.html" rel="next">
 <link href="../../book/001_package/posts/src-layout-vs-flat-layout.html" rel="prev">
 <link href="../../img/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -419,8 +419,14 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../book/004_testing/posts/test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
   </div>
 </li>
       </ul>
@@ -454,7 +460,6 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
   <ul>
   <li><a href="#なぜテストを書くのか" id="toc-なぜテストを書くのか" class="nav-link active" data-scroll-target="#なぜテストを書くのか">なぜテストを書くのか？</a></li>
   <li><a href="#なぜpytestを使うのか" id="toc-なぜpytestを使うのか" class="nav-link" data-scroll-target="#なぜpytestを使うのか">なぜpytestを使うのか？</a></li>
-  <li><a href="#assert文" id="toc-assert文" class="nav-link" data-scroll-target="#assert文"><code>assert</code>文</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/index.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
@@ -488,7 +493,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-06-02</p>
+      <p class="date-modified">2026-06-03</p>
     </div>
   </div>
     
@@ -501,25 +506,52 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 <section id="なぜテストを書くのか" class="level2">
 <h2 class="anchored" data-anchor-id="なぜテストを書くのか">なぜテストを書くのか？</h2>
-<p>データ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「開発したソフトウェアを正しく，効果的に，かつ効率的に導入する」ことです． ここでいう導入とは，単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすることを指します．</p>
-<p>そのためには，<strong>プログラムが正しく実行され，正しい結果を出力することを保証する</strong>仕組みが欠かせません． 特にデータサイエンスの現場では，入力データの分布が変わったり，前処理や特徴量生成のロジックを修正したりする機会が頻繁に発生します． このとき，変更が既存の挙動を壊していないことを確認できなければ，安心してコードを更新することはできません．</p>
-<p>テストは，この「正しさ」を継続的に検証するための土台です． テストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる，と言い換えることもできます． 逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎず，変更のたびに手作業での確認が必要となり，導入の速度と信頼性の両方を損ないます．</p>
+<p><span class="mini-section">目的</span></p>
+<ul>
+<li>データ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「<span class="regmonkey-bold">開発したソフトウェアを正しく，効果的に，かつ効率的に導入する</span>」こと</li>
+</ul>
+<div id="def-" class="custom_problem blog-custom-border theorem definition">
+<p><span class="theorem-title"><strong>定義 1</strong></span> <span class="def-title">ソフトウェアの導入</span></p>
+<p>単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすること</p>
+</div>
+<p><span class="mini-section">導入に必要なこと</span></p>
+<ul>
+<li><strong>プログラムが正しく実行され，正しい結果を出力することを保証する</strong>仕組みの確保</li>
+</ul>
+<p>特にデータサイエンスの現場では，入力データの分布が変わったり，前処理や特徴量生成のロジックを修正したりする機会が頻繁に発生します． このとき，変更が既存の挙動を壊していないことを確認できなければ，安心してコードを更新することはできません．</p>
+<p><span class="mini-section">テストの位置づけ</span></p>
+<ul>
+<li>テストは，この「正しさ」を継続的に検証するための土台</li>
+<li>テストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる</li>
+<li>逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎない．</li>
+</ul>
 </section>
 <section id="なぜpytestを使うのか" class="level2">
 <h2 class="anchored" data-anchor-id="なぜpytestを使うのか">なぜpytestを使うのか？</h2>
 <p>Pythonが提供する標準のユニットテストフレームワークとして<code>unittest</code>がありますが，<code>unittest</code>と比べ<code>pytest</code>には以下のようなメリットがあります．</p>
-<ul>
-<li><strong>テストが書きやすい</strong>：Classを必ずしも作成する必要がなく，小規模なテストについてはテスト関数を定義するだけで十分です．ボイラープレートが少なく，テストを書き始めるコストが低く抑えられます．</li>
-<li><strong>複雑なテストも書きやすい</strong>：fixtureやparametrizeといった機能により，前処理の共通化やテストケースの網羅的な生成を簡潔に表現できます．データの組み合わせが多いデータサイエンスのテストとも相性が良いです．</li>
-<li><strong>テストが読みやすい</strong>：<code>assert</code>文がそのまま使え，期待値と実際の値の比較が直感的に記述できます．加えてtraceback機能が充実しており，失敗時の原因を素早く特定できます（不要であればoffにすることも可能です）．</li>
-<li><strong>command-line tool として完結している</strong>：CLIから<code>pytest</code>コマンドを実行するだけでテストの収集から実行・レポートまでを行えるため，ローカル開発でもCI/CDパイプラインへの組み込みでも扱いやすいです．</li>
-</ul>
-</section>
-<section id="assert文" class="level2">
-<h2 class="anchored" data-anchor-id="assert文"><code>assert</code>文</h2>
-<p><code>pytest</code>を用いたunit testの基本構文を理解するために以下のコードを見てみます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_passing():</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="glossary-container">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> ① テストが書きやすい</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      Classを必ずしも作成する必要がなく，小規模なテストであればテスト関数を定義するだけで十分．</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      ボイラープレートが少なく，テストを書き始めるコストを低く抑えられる．</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> ② 複雑なテストも書きやすい</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      fixtureやparametrizeといった機能により，前処理の共通化やテストケースの網羅的な生成を簡潔に表現できる．</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      データの組み合わせが多いデータサイエンスのテストとも相性が良い．</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> ③ テストが読みやすい</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>      `assert`文をそのまま利用できるため，期待値と実際の値の比較を直感的に記述できる．</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      また，失敗時には詳細なtracebackが表示されるため，原因の特定が容易．</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      必要に応じてtracebackの出力を抑制することも可能．</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> ④ command-line toolとして完結している</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      CLIから `pytest` コマンドを実行するだけで，テストの収集・実行・レポート生成までを一貫して行える．</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>      ローカル開発環境だけでなく，CI/CDパイプラインへの組み込みも容易．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
 
 </section>
@@ -956,8 +988,8 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../book/004_testing/posts/test.html" class="pagination-link" aria-label="pytest and Raise Error">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../book/004_testing/posts/00-getting-started-with-pytest.html" class="pagination-link" aria-label="getting started with pytest">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

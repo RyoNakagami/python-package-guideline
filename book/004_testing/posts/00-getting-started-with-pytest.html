@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ryo Nakagami">
+<meta name="dcterms.date" content="2026-06-03">
 
-<title>1&nbsp; src layout vs flat layout – Python Package Guideline</title>
+<title>2&nbsp; getting started with pytest – Python Package Guideline</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,8 +35,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../book/004_testing/index.html" rel="next">
-<link href="../../../index.html" rel="prev">
+<link href="../../../book/004_testing/posts/test.html" rel="next">
+<link href="../../../book/004_testing/index.html" rel="prev">
 <link href="../../../img/favicon.ico" rel="icon">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -151,8 +118,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="1&nbsp; src layout vs flat layout – Python Package Guideline">
-<meta property="og:description" content="">
+<meta property="og:title" content="2&nbsp; getting started with pytest – Python Package Guideline">
 <meta property="og:site_name" content="Python Package Guideline">
 </head>
 
@@ -327,7 +293,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html">packaging</a></li><li class="breadcrumb-item"><a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">src layout vs flat layout</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -400,7 +366,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">src layout vs flat layout</span></span></a>
   </div>
 </li>
@@ -417,7 +383,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span></a>
   </div>
 </li>
@@ -451,34 +417,42 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目次</h2>
-   
-  <ul>
-  <li><a href="#src-layout-とは" id="toc-src-layout-とは" class="nav-link active" data-scroll-target="#src-layout-とは">src layout とは</a></li>
-  <li><a href="#なぜ-src-layout-か" id="toc-なぜ-src-layout-か" class="nav-link" data-scroll-target="#なぜ-src-layout-か">なぜ src layout か</a></li>
-  <li><a href="#pyproject.toml-の設定" id="toc-pyproject.toml-の設定" class="nav-link" data-scroll-target="#pyproject.toml-の設定">pyproject.toml の設定</a></li>
-  <li><a href="#anti-pattern" id="toc-anti-pattern" class="nav-link" data-scroll-target="#anti-pattern">Anti-pattern</a></li>
-  <li><a href="#例外" id="toc-例外" class="nav-link" data-scroll-target="#例外">例外</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/001_package/posts/src-layout-vs-flat-layout.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html">packaging</a></li><li class="breadcrumb-item"><a href="../../../book/001_package/posts/src-layout-vs-flat-layout.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">src layout vs flat layout</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">src layout vs flat layout</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">作者</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ryo Nakagami </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">公開</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">2026-06-03</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">更新日</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">2026-06-03</p>
+    </div>
+  </div>
     
   </div>
   
@@ -487,83 +461,21 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-note callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>TL;DR
+<span class="screen-reader-only">ノート</span>TL;DRs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li><strong>PKG-LAYOUT-001</strong> (required): 新規パッケージは src layout を採用する。 テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。</li>
-<li><strong>PKG-LAYOUT-002</strong> (required): tests は src の外に置く。 配布パッケージにテストコードを含めないため。</li>
-<li><strong>PKG-LAYOUT-003</strong> (recommended): flat から移行する際はビルド設定も同時に更新する。 ディレクトリ移動だけではビルドが壊れる。</li>
-</ul>
+
 </div>
 </div>
-<hr>
-<section id="src-layout-とは" class="level2">
-<h2 class="anchored" data-anchor-id="src-layout-とは">src layout とは</h2>
-<p>src layout は、import 可能なパッケージ本体を <code>src/</code> ディレクトリの下に置く構成である。 flat layout（パッケージをリポジトリ直下に置く）と対比される。</p>
-<div class="allowed-mcp-read" data-label="src-layout-structure" data-rules="PKG-LAYOUT-001,PKG-LAYOUT-002">
-<pre class="text"><code>mypackage/
-├── pyproject.toml
-├── src/
-│   └── mypackage/
-│       ├── __init__.py
-│       └── core.py
-└── tests/
-    └── test_core.py</code></pre>
-<p>ポイントは 2 つ。import 対象は <code>src/mypackage/</code> の下にあり、<code>tests/</code> は <code>src/</code> の外にある。</p>
-</div>
-</section>
-<section id="なぜ-src-layout-か" class="level2">
-<h2 class="anchored" data-anchor-id="なぜ-src-layout-か">なぜ src layout か</h2>
-<p>flat layout の最大の問題は、リポジトリルートが <code>sys.path</code> に入ってしまうことである。 これにより「パッケージをインストールしていないのに import が通る」状態が生まれ、 <code>pyproject.toml</code> のパッケージング設定にミスがあっても気づけない。</p>
-<p>src layout では、テストは必ず install 済みのパッケージに対して実行される。 editable install (<code>pip install -e .</code> や <code>uv pip install -e .</code>) を挟むことで、 配布物と同じ import 経路でテストが走り、include 漏れや相対 import の崩れが CI の段階で顕在化する。</p>
-<div class="allowed-mcp-read" data-label="src-layout-editable-install" data-rules="PKG-LAYOUT-001">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># src layout では editable install してからテストする</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> pip install <span class="at">-e</span> .</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run pytest</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># これにより tests/ は install 済みの mypackage を import する</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (リポジトリルート経由ではない)</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="pyproject.toml-の設定" class="level2">
-<h2 class="anchored" data-anchor-id="pyproject.toml-の設定">pyproject.toml の設定</h2>
-<p>src layout を採用する場合、ビルドバックエンドにパッケージの場所を教える必要がある。</p>
-<div class="allowed-mcp-read" data-label="src-layout-pyproject" data-rules="PKG-LAYOUT-001,PKG-LAYOUT-003">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[build-system]</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dt">requires</span> <span class="op">=</span> <span class="op">[</span><span class="st">"hatchling"</span><span class="op">]</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dt">build-backend</span> <span class="op">=</span> <span class="st">"hatchling.build"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">[tool.hatch.build.targets.wheel]</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="dt">packages</span> <span class="op">=</span> <span class="op">[</span><span class="st">"src/mypackage"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>flat layout から移行する場合、この <code>packages</code> 指定の更新を忘れると wheel が空になったり、誤ったディレクトリを取り込んだりする。</p>
-</div>
-</section>
-<section id="anti-pattern" class="level2">
-<h2 class="anchored" data-anchor-id="anti-pattern">Anti-pattern</h2>
-<div class="allowed-mcp-read" data-label="flat-layout-antipattern" data-rules="PKG-LAYOUT-001,PKG-LAYOUT-002">
-<pre class="text"><code># NG: flat layout。新規パッケージでは避ける
-mypackage/
-├── pyproject.toml
-├── mypackage/          # src/ が無く、リポジトリルートに直置き
-│   └── __init__.py
-└── test_core.py        # tests/ ディレクトリも無く直置き</code></pre>
-<p>この構成では、<code>mypackage</code> を install しなくても リポジトリルートから import できてしまう。テストが install 済み パッケージを検証していないため、配布後に「import できない」事故が起きる。</p>
-</div>
-</section>
-<section id="例外" class="level2">
-<h2 class="anchored" data-anchor-id="例外">例外</h2>
-<p>C 拡張モジュールやビルド成果物をリポジトリ直下に置く必要がある特殊な構成では、 src layout を厳密に適用できないことがある。その場合は PKG-LAYOUT-003 に従い、 ビルド設定でパッケージ探索パスを明示的に管理する。</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -988,15 +900,17 @@ mypackage/
     }
   });
   </script>
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/python-package-guideline" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../../../book/004_testing/index.html" class="pagination-link" aria-label="ソフトウェアテスト">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ソフトウェアテスト</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../book/004_testing/index.html" class="pagination-link" aria-label="ソフトウェアテスト">
-        <span class="nav-page-text">ソフトウェアテスト</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../book/004_testing/posts/test.html" class="pagination-link" aria-label="pytest and Raise Error">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1017,7 +931,7 @@ mypackage/
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/001_package/posts/src-layout-vs-flat-layout.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/00-getting-started-with-pytest.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

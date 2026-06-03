@@ -9,7 +9,7 @@
 <meta name="author" content="Ryo Nakagami">
 <meta name="dcterms.date" content="2024-11-11">
 
-<title>2&nbsp; pytest and Raise Error – Python Package Guideline</title>
+<title>3&nbsp; pytest and Raise Error – Python Package Guideline</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../book/999_appendix/glossary.html" rel="next">
-<link href="../../../book/004_testing/index.html" rel="prev">
+<link href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" rel="prev">
 <link href="../../../img/favicon.ico" rel="icon">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -153,7 +153,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="2&nbsp; pytest and Raise Error – Python Package Guideline">
+<meta property="og:title" content="3&nbsp; pytest and Raise Error – Python Package Guideline">
 <meta property="og:site_name" content="Python Package Guideline">
 </head>
 
@@ -328,7 +328,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -418,8 +418,14 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../book/004_testing/posts/test.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
   </div>
 </li>
       </ul>
@@ -453,9 +459,9 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></h1>
 </div>
 
 
@@ -923,8 +929,8 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../book/004_testing/index.html" class="pagination-link" aria-label="ソフトウェアテスト">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ソフトウェアテスト</span>
+      <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="pagination-link" aria-label="getting started with pytest">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

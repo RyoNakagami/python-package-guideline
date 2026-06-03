@@ -24,18 +24,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html",
     "title": "1  src layout vs flat layout",
     "section": "",
-    "text": "TL;DR",
-    "crumbs": [
-      "packaging",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
-    ]
-  },
-  {
-    "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#tldr",
-    "href": "book/001_package/posts/src-layout-vs-flat-layout.html#tldr",
-    "title": "1  src layout vs flat layout",
-    "section": "",
-    "text": "PKG-LAYOUT-001 (required): 新規パッケージは src layout を採用する。 テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。\nPKG-LAYOUT-002 (required): tests は src の外に置く。 配布パッケージにテストコードを含めないため。\nPKG-LAYOUT-003 (recommended): flat から移行する際はビルド設定も同時に更新する。 ディレクトリ移動だけではビルドが壊れる。",
+    "text": "src layout とは\nsrc layout は、import 可能なパッケージ本体を src/ ディレクトリの下に置く構成である。 flat layout（パッケージをリポジトリ直下に置く）と対比される。",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -45,8 +34,8 @@
     "objectID": "book/001_package/posts/src-layout-vs-flat-layout.html#src-layout-とは",
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#src-layout-とは",
     "title": "1  src layout vs flat layout",
-    "section": "src layout とは",
-    "text": "src layout とは\nsrc layout は、import 可能なパッケージ本体を src/ ディレクトリの下に置く構成である。 flat layout（パッケージをリポジトリ直下に置く）と対比される。\n\nmypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\nポイントは 2 つ。import 対象は src/mypackage/ の下にあり、tests/ は src/ の外にある。",
+    "section": "",
+    "text": "mypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\nポイントは 2 つ。import 対象は src/mypackage/ の下にあり、tests/ は src/ の外にある。",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -101,7 +90,17 @@
     "href": "book/004_testing/index.html",
     "title": "ソフトウェアテスト",
     "section": "",
-    "text": "なぜテストを書くのか？\nデータ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「開発したソフトウェアを正しく，効果的に，かつ効率的に導入する」ことです． ここでいう導入とは，単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすることを指します．\nそのためには，プログラムが正しく実行され，正しい結果を出力することを保証する仕組みが欠かせません． 特にデータサイエンスの現場では，入力データの分布が変わったり，前処理や特徴量生成のロジックを修正したりする機会が頻繁に発生します． このとき，変更が既存の挙動を壊していないことを確認できなければ，安心してコードを更新することはできません．\nテストは，この「正しさ」を継続的に検証するための土台です． テストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる，と言い換えることもできます． 逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎず，変更のたびに手作業での確認が必要となり，導入の速度と信頼性の両方を損ないます．",
+    "text": "なぜテストを書くのか？\n目的\n導入に必要なこと\n特にデータサイエンスの現場では，入力データの分布が変わったり，前処理や特徴量生成のロジックを修正したりする機会が頻繁に発生します． このとき，変更が既存の挙動を壊していないことを確認できなければ，安心してコードを更新することはできません．\nテストの位置づけ",
+    "crumbs": [
+      "ソフトウェアテスト"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/index.html#なぜテストを書くのか",
+    "href": "book/004_testing/index.html#なぜテストを書くのか",
+    "title": "ソフトウェアテスト",
+    "section": "",
+    "text": "データ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「開発したソフトウェアを正しく，効果的に，かつ効率的に導入する」こと\n\n\n定義 1 ソフトウェアの導入\n単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすること\n\n\n\nプログラムが正しく実行され，正しい結果を出力することを保証する仕組みの確保\n\n\n\n\nテストは，この「正しさ」を継続的に検証するための土台\nテストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる\n逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎない．",
     "crumbs": [
       "ソフトウェアテスト"
     ]
@@ -111,30 +110,31 @@
     "href": "book/004_testing/index.html#なぜpytestを使うのか",
     "title": "ソフトウェアテスト",
     "section": "なぜpytestを使うのか？",
-    "text": "なぜpytestを使うのか？\nPythonが提供する標準のユニットテストフレームワークとしてunittestがありますが，unittestと比べpytestには以下のようなメリットがあります．\n\nテストが書きやすい：Classを必ずしも作成する必要がなく，小規模なテストについてはテスト関数を定義するだけで十分です．ボイラープレートが少なく，テストを書き始めるコストが低く抑えられます．\n複雑なテストも書きやすい：fixtureやparametrizeといった機能により，前処理の共通化やテストケースの網羅的な生成を簡潔に表現できます．データの組み合わせが多いデータサイエンスのテストとも相性が良いです．\nテストが読みやすい：assert文がそのまま使え，期待値と実際の値の比較が直感的に記述できます．加えてtraceback機能が充実しており，失敗時の原因を素早く特定できます（不要であればoffにすることも可能です）．\ncommand-line tool として完結している：CLIからpytestコマンドを実行するだけでテストの収集から実行・レポートまでを行えるため，ローカル開発でもCI/CDパイプラインへの組み込みでも扱いやすいです．",
+    "text": "なぜpytestを使うのか？\nPythonが提供する標準のユニットテストフレームワークとしてunittestがありますが，unittestと比べpytestには以下のようなメリットがあります．\n\nglossary:\n  - def: ① テストが書きやすい\n    description: |\n      Classを必ずしも作成する必要がなく，小規模なテストであればテスト関数を定義するだけで十分．\n      ボイラープレートが少なく，テストを書き始めるコストを低く抑えられる．\n\n  - def: ② 複雑なテストも書きやすい\n    description: |\n      fixtureやparametrizeといった機能により，前処理の共通化やテストケースの網羅的な生成を簡潔に表現できる．\n      データの組み合わせが多いデータサイエンスのテストとも相性が良い．\n\n  - def: ③ テストが読みやすい\n    description: |\n      `assert`文をそのまま利用できるため，期待値と実際の値の比較を直感的に記述できる．\n      また，失敗時には詳細なtracebackが表示されるため，原因の特定が容易．\n      必要に応じてtracebackの出力を抑制することも可能．\n\n  - def: ④ command-line toolとして完結している\n    description: |\n      CLIから `pytest` コマンドを実行するだけで，テストの収集・実行・レポート生成までを一貫して行える．\n      ローカル開発環境だけでなく，CI/CDパイプラインへの組み込みも容易．",
     "crumbs": [
       "ソフトウェアテスト"
     ]
   },
   {
-    "objectID": "book/004_testing/index.html#assert文",
-    "href": "book/004_testing/index.html#assert文",
-    "title": "ソフトウェアテスト",
-    "section": "assert文",
-    "text": "assert文\npytestを用いたunit testの基本構文を理解するために以下のコードを見てみます．\ndef test_passing():\n    assert (1, 2, 3) == (1, 2, 3)",
+    "objectID": "book/004_testing/posts/00-getting-started-with-pytest.html",
+    "href": "book/004_testing/posts/00-getting-started-with-pytest.html",
+    "title": "2  getting started with pytest",
+    "section": "",
+    "text": "ノートTL;DRs",
     "crumbs": [
-      "ソフトウェアテスト"
+      "ソフトウェアテスト",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>getting started with pytest</span>"
     ]
   },
   {
     "objectID": "book/004_testing/posts/test.html",
     "href": "book/004_testing/posts/test.html",
-    "title": "2  pytest and Raise Error",
+    "title": "3  pytest and Raise Error",
     "section": "",
     "text": "import pytest",
     "crumbs": [
       "ソフトウェアテスト",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>pytest and Raise Error</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>pytest and Raise Error</span>"
     ]
   },
   {
@@ -153,7 +153,7 @@
     "href": "book/999_appendix/glossary.html#プログラミングスタイル",
     "title": "用語集",
     "section": "",
-    "text": "glossary:\n  - def: スパゲッティコード\n    description: |\n      ほとんど誰にも理解できないほど雑然として整理されていないソースコード\n\n  - def: 名前空間 (namespace)\n    description: |\n      名前からオブジェクトへの対応付け (mapping) を管理する抽象的な空間．ほとんどの名前空間は，現状では Python の辞書として実装されている．異なった名前空間にある名前の間には全く関係がない，二つの別々のモジュールの両方で関数 `maximize` という関数を定義することができ，定義自体は混同されることはない．\n      「`Namespaces are one honking great idea -- let's do more of those!`」",
+    "text": "glossary:\n  - def: スパゲッティコード\n    description: |\n      ほとんど誰にも理解できないほど雑然として整理されていないソースコード\n\n  - def: 名前空間 (namespace)\n    description: |\n      名前からオブジェクトへの対応付け (mapping) を管理する抽象的な空間．ほとんどの名前空間は，現状では Python の辞書として実装されている．異なった名前空間にある名前の間には全く関係がない，二つの別々のモジュールの両方で関数 `maximize` という関数を定義することができ，定義自体は混同されることはない．\n      「`Namespaces are one honking great idea -- let's do more of those!`」\n\n  - def: ボイラープレート\n    description: |\n      毎回ほぼ同じ内容を書く必要がある定型的なコードや記述のこと．ソフトウェア開発では，実際のロジックとは直接関係ないものの，フレームワークや言語の都合で必要になる記述を指すことが多い．",
     "crumbs": [
       "Appendices",
       "用語集"
@@ -197,7 +197,7 @@
     "href": "book/999_appendix/glossary.html#testing",
     "title": "用語集",
     "section": "Testing",
-    "text": "Testing\n\nglossary:\n  - def: pytest\n    description: |\n      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．",
+    "text": "Testing\n\nglossary:\n  - def: pytest\n    description: |\n      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．\n\n  - def: セットアップコード (setup code)\n    description: |\n      テスト実行前に必要な準備を行うコード．\n      テストデータの作成，一時ディレクトリの生成，データベース接続，\n      モデルのロードなどが該当する．\n\n  - def: テアダウンコード (teardown code)\n    description: |\n      テスト実行後に行う後片付けのコード．\n      一時ファイルの削除，データベース接続の切断，\n      サーバー停止，モックの解除などが該当する．\n      テストによって作成されたリソースを適切に解放することが目的\n\n  - def: fixture\n    description: |\n      pytestが提供するセットアップおよびティアダウン処理を再利用可能な形で定義する仕組み．\n      複数のテストで共通する準備処理をまとめて管理できる．",
     "crumbs": [
       "Appendices",
       "用語集"

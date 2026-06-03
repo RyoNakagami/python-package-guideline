@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "generated_at": "2026-06-02T10:23:31.643698+00:00",
+  "generated_at": "2026-06-03T09:56:12.507457+00:00",
   "site_url": "https://ryonakagami.github.io/python-package-guideline",
   "rules": [
     {
@@ -98,7 +98,7 @@
       "severity": "recommended",
       "maturity": "stable",
       "rationale": "ディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n",
-      "tldr": "- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。",
+      "tldr": "- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。\n\n:::",
       "phase": [
         "init",
         "packaging"
@@ -130,7 +130,7 @@
       "mcp_block_labels": [
         "src-layout-pyproject"
       ],
-      "vector_text": "既存の flat layout を移行する場合はビルド設定も同時に更新する\nディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。"
+      "vector_text": "既存の flat layout を移行する場合はビルド設定も同時に更新する\nディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。\n\n:::"
     }
   ],
   "chapters": {
