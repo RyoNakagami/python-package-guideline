@@ -60,7 +60,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -70,7 +89,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../book/004_testing/posts/test.html" rel="prev">
+<link href="../../book/999_appendix/python101/assert.html" rel="next">
+<link href="../../book/005_testing_in_practice/posts/approximate-equality.html" rel="prev">
 <link href="../../img/favicon.ico" rel="icon">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -390,6 +410,12 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -424,16 +450,16 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../book/004_testing/posts/test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
+  <a href="../../book/004_testing/posts/01-test-discovery.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+            <a href="../../book/005_testing_in_practice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">数値計算とpytest</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -441,10 +467,61 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../book/005_testing_in_practice/posts/approximate-equality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Approximate Equality Test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../book/999_appendix/glossary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">用語集</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/999_appendix/python101/assert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">pytest in detail</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../book/999_appendix/pytest-details/pytest-approx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><code>pytest.approx</code></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -460,6 +537,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
   <li><a href="#プログラミングスタイル" id="toc-プログラミングスタイル" class="nav-link active" data-scroll-target="#プログラミングスタイル">プログラミングスタイル</a></li>
   <li><a href="#パッケージ全般" id="toc-パッケージ全般" class="nav-link" data-scroll-target="#パッケージ全般">パッケージ全般</a></li>
   <li><a href="#環境系" id="toc-環境系" class="nav-link" data-scroll-target="#環境系">環境系</a></li>
+  <li><a href="#python-basics" id="toc-python-basics" class="nav-link" data-scroll-target="#python-basics">Python Basics</a></li>
   <li><a href="#ファイル形式" id="toc-ファイル形式" class="nav-link" data-scroll-target="#ファイル形式">ファイル形式</a></li>
   <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
   </ul>
@@ -495,7 +573,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-06-03</p>
+      <p class="date-modified">2026-06-04</p>
     </div>
   </div>
     
@@ -506,7 +584,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </header>
 
 
-<p>Pythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に <span class="citation" data-cites="pypa_packaging">@pypa_packaging</span>, <span class="citation" data-cites="PEP561">@PEP561</span> をベースに記述しています．</p>
+<p>Pythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に <span class="citation" data-cites="pypa_packaging">Python Packaging Authority (<a href="../../references.html#ref-pypa_packaging" role="doc-biblioref">2025年</a>)</span>, <span class="citation" data-cites="PEP561">Emma Harper Smith (<a href="../../references.html#ref-PEP561" role="doc-biblioref">2017年</a>)</span> をベースに記述しています．</p>
 <section id="プログラミングスタイル" class="level2">
 <h2 class="anchored" data-anchor-id="プログラミングスタイル">プログラミングスタイル</h2>
 <div class="glossary-container">
@@ -565,65 +643,83 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      &lt;a href="https://test.pypi.org/"&gt;TestPyPI&lt;/a&gt;は PyPI のテスト用リポジトリ．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
+<section id="python-basics" class="level2">
+<h2 class="anchored" data-anchor-id="python-basics">Python Basics</h2>
+<div class="glossary-container">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> `__debug__`</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      `__debug__` はインタプリタ起動時に決まる組み込み変数．</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      通常起動→ `True`，`python -O` 起動→`False`．`None`, `False`, `True`</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      と同じように代入が禁止されている．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 <section id="ファイル形式" class="level2">
 <h2 class="anchored" data-anchor-id="ファイル形式">ファイル形式</h2>
 <div class="glossary-container">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> __init.py__</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> setup.py</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      `python install setup.py` でインストール</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> pyproject.toml</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> eggフォーマット</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> Wheelフォーマット</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>      標準的なビルド済配布物フォーマット．</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> stubs</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される。</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> __init.py__</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> setup.py</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      `python install setup.py` でインストール</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> pyproject.toml</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> eggフォーマット</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> Wheelフォーマット</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      標準的なビルド済配布物フォーマット．</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> stubs</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="testing" class="level2">
 <h2 class="anchored" data-anchor-id="testing">Testing</h2>
 <div class="glossary-container">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> pytest</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> セットアップコード (setup code)</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      テスト実行前に必要な準備を行うコード．</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      テストデータの作成，一時ディレクトリの生成，データベース接続，</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      モデルのロードなどが該当する．</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> テアダウンコード (teardown code)</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      テスト実行後に行う後片付けのコード．</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      一時ファイルの削除，データベース接続の切断，</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      サーバー停止，モックの解除などが該当する．</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      テストによって作成されたリソースを適切に解放することが目的</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> fixture</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      pytestが提供するセットアップおよびティアダウン処理を再利用可能な形で定義する仕組み．</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      複数のテストで共通する準備処理をまとめて管理できる．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glossary</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> pytest</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> fixture</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>      pytestが提供するセットアップおよびティアダウン処理を再利用可能な形で定義する仕組み．複数のテストで共通する準備処理をまとめて管理できる．</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> セットアップコード (setup code)</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>      テスト実行前に必要な準備を行うコード．テストデータの作成，一時ディレクトリの生成，データベース接続，モデルのロードなどが該当する．</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> テアダウンコード (teardown code)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>      テスト実行後に行う後片付けのコード．一時ファイルの削除，データベース接続の切断，サーバー停止，モックの解除などが該当する．テストによって作成されたリソースを適切に解放することが目的．</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">def</span><span class="kw">:</span><span class="at"> テストディスカバリ</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">    description</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>      実行するテストを検出すること．pytestにおいて，デフォルトではテストファイルならば，`test_&lt;sth&gt;.py` or `&lt;sth&gt;_test.py`，</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      テスト関数は`test_&lt;func&gt;.py`，テストクラスは `Test&lt;Cls&gt;`を基準に検出してくれる．</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
+<div id="ref-PEP561" class="csl-entry" role="listitem">
+Emma Harper Smith. 2017年. <em>PEP 561 – Distributing and Packaging Type Information</em>. <a href="https://peps.python.org/pep-0561/">https://peps.python.org/pep-0561/</a>.
+</div>
+<div id="ref-pypa_packaging" class="csl-entry" role="listitem">
+Python Packaging Authority. 2025年. <em>Python Packaging User Guide</em>. <a href="https://packaging.python.org/en/latest/">https://packaging.python.org/en/latest/</a>.
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
@@ -1053,11 +1149,14 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../book/004_testing/posts/test.html" class="pagination-link" aria-label="pytest and Raise Error">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span>
+      <a href="../../book/005_testing_in_practice/posts/approximate-equality.html" class="pagination-link" aria-label="Approximate Equality Test">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Approximate Equality Test</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../book/999_appendix/python101/assert.html" class="pagination-link" aria-label="`assert` statement">
+        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

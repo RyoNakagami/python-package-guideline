@@ -14,9 +14,19 @@
     "href": "index.html#mcp-setup",
     "title": "Python Package Guideline",
     "section": "MCP setup",
-    "text": "MCP setup\nclaude mcp add --transport stdio python-guideline \\\n  --scope user \\\n  --env CATALOG_URL=https://ryonakagami.github.io/python-package-guideline/rules-catalog.json \\\n  -- quarto-book-mcp\n~.claude.json\n  \"mcpServers\": {\n    \"python-guideline\": {\n      \"type\": \"stdio\",\n      \"command\": \"quarto-book-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"CATALOG_URL\": \"https://ryonakagami.github.io/python-package-guideline/rules-catalog.json\"\n      }\n    }\n  }\nThen, claude codeを起動してmcp接続設定を完了した後に\npython-guideline の ping を呼んで\nthen\n● 応答が返ってきました。\n\n  pong (catalog v1.0, 3 rules)\n\n  カタログバージョン v1.0、ルール数 3 で正常に接続できています。",
+    "text": "MCP setup\nclaude mcp add --transport stdio python-guideline \\\n  --scope user \\\n  --env CATALOG_URL=https://ryonakagami.github.io/python-package-guideline/rules-catalog.json \\\n  -- quarto-book-mcp\n~.claude.json\n  \"mcpServers\": {\n    \"python-guideline\": {\n      \"type\": \"stdio\",\n      \"command\": \"quarto-book-mcp\",\n      \"args\": [],\n      \"env\": {\n        \"CATALOG_URL\": \"https://ryonakagami.github.io/python-package-guideline/rules-catalog.json\"\n      }\n    }\n  }\nThen, claude codeを起動してmcp接続設定を完了した後に\npython-guideline の ping を呼んで\nthen\n● 応答が返ってきました．\n\n  pong (catalog v1.0, 3 rules)\n\n  カタログバージョン v1.0，ルール数 3 で正常に接続できています．",
     "crumbs": [
       "Preface"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Emma Harper Smith. 2017. PEP 561 – Distributing and Packaging Type\nInformation. https://peps.python.org/pep-0561/.\n\n\npytest-dev team. 2025.\nPytest.approx. https://docs.pytest.org/en/stable/reference/reference.html#pytest-approx.\n\n\nPython Packaging Authority. 2025. Python Packaging User Guide.\nhttps://packaging.python.org/en/latest/.",
+    "crumbs": [
+      "References"
     ]
   },
   {
@@ -24,7 +34,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html",
     "title": "1  src layout vs flat layout",
     "section": "",
-    "text": "src layout とは\nsrc layout は、import 可能なパッケージ本体を src/ ディレクトリの下に置く構成である。 flat layout（パッケージをリポジトリ直下に置く）と対比される。",
+    "text": "src layout とは\nsrc layout は，import 可能なパッケージ本体を src/ ディレクトリの下に置く構成である． flat layout（パッケージをリポジトリ直下に置く）と対比される．",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -35,7 +45,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#src-layout-とは",
     "title": "1  src layout vs flat layout",
     "section": "",
-    "text": "mypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\nポイントは 2 つ。import 対象は src/mypackage/ の下にあり、tests/ は src/ の外にある。",
+    "text": "mypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\nポイントは 2 つ．import 対象は src/mypackage/ の下にあり，tests/ は src/ の外にある．",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -46,7 +56,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#なぜ-src-layout-か",
     "title": "1  src layout vs flat layout",
     "section": "なぜ src layout か",
-    "text": "なぜ src layout か\nflat layout の最大の問題は、リポジトリルートが sys.path に入ってしまうことである。 これにより「パッケージをインストールしていないのに import が通る」状態が生まれ、 pyproject.toml のパッケージング設定にミスがあっても気づけない。\nsrc layout では、テストは必ず install 済みのパッケージに対して実行される。 editable install (pip install -e . や uv pip install -e .) を挟むことで、 配布物と同じ import 経路でテストが走り、include 漏れや相対 import の崩れが CI の段階で顕在化する。\n\n# src layout では editable install してからテストする\nuv pip install -e .\nuv run pytest\n\n# これにより tests/ は install 済みの mypackage を import する\n# (リポジトリルート経由ではない)",
+    "text": "なぜ src layout か\nflat layout の最大の問題は，リポジトリルートが sys.path に入ってしまうことである． これにより「パッケージをインストールしていないのに import が通る」状態が生まれ， pyproject.toml のパッケージング設定にミスがあっても気づけない．\nsrc layout では，テストは必ず install 済みのパッケージに対して実行される． editable install (pip install -e . や uv pip install -e .) を挟むことで， 配布物と同じ import 経路でテストが走り，include 漏れや相対 import の崩れが CI の段階で顕在化する．\n\n# src layout では editable install してからテストする\nuv pip install -e .\nuv run pytest\n\n# これにより tests/ は install 済みの mypackage を import する\n# (リポジトリルート経由ではない)",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -57,7 +67,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#pyproject.toml-の設定",
     "title": "1  src layout vs flat layout",
     "section": "pyproject.toml の設定",
-    "text": "pyproject.toml の設定\nsrc layout を採用する場合、ビルドバックエンドにパッケージの場所を教える必要がある。\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\nflat layout から移行する場合、この packages 指定の更新を忘れると wheel が空になったり、誤ったディレクトリを取り込んだりする。",
+    "text": "pyproject.toml の設定\nsrc layout を採用する場合，ビルドバックエンドにパッケージの場所を教える必要がある．\n\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\nflat layout から移行する場合，この packages 指定の更新を忘れると wheel が空になったり，誤ったディレクトリを取り込んだりする．",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -68,7 +78,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#anti-pattern",
     "title": "1  src layout vs flat layout",
     "section": "Anti-pattern",
-    "text": "Anti-pattern\n\n# NG: flat layout。新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く、リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\nこの構成では、mypackage を install しなくても リポジトリルートから import できてしまう。テストが install 済み パッケージを検証していないため、配布後に「import できない」事故が起きる。",
+    "text": "Anti-pattern\n\n# NG: flat layout．新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く，リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\nこの構成では，mypackage を install しなくても リポジトリルートから import できてしまう．テストが install 済み パッケージを検証していないため，配布後に「import できない」事故が起きる．",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -79,7 +89,7 @@
     "href": "book/001_package/posts/src-layout-vs-flat-layout.html#例外",
     "title": "1  src layout vs flat layout",
     "section": "例外",
-    "text": "例外\nC 拡張モジュールやビルド成果物をリポジトリ直下に置く必要がある特殊な構成では、 src layout を厳密に適用できないことがある。その場合は PKG-LAYOUT-003 に従い、 ビルド設定でパッケージ探索パスを明示的に管理する。",
+    "text": "例外\nC 拡張モジュールやビルド成果物をリポジトリ直下に置く必要がある特殊な構成では， src layout を厳密に適用できないことがある．その場合は PKG-LAYOUT-003 に従い， ビルド設定でパッケージ探索パスを明示的に管理する．",
     "crumbs": [
       "packaging",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>src layout vs flat layout</span>"
@@ -100,7 +110,7 @@
     "href": "book/004_testing/index.html#なぜテストを書くのか",
     "title": "ソフトウェアテスト",
     "section": "",
-    "text": "データ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「開発したソフトウェアを正しく，効果的に，かつ効率的に導入する」こと\n\n\n定義 1 ソフトウェアの導入\n単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすること\n\n\n\nプログラムが正しく実行され，正しい結果を出力することを保証する仕組みの確保\n\n\n\n\nテストは，この「正しさ」を継続的に検証するための土台\nテストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる\n逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎない．",
+    "text": "データ分析や機械学習のプロジェクトにおいて，私たちが最終的にやりたいことは「開発したソフトウェアを正しく，効果的に，かつ効率的に導入する」こと\n\n\nDefinition 1 ソフトウェアの導入\n単にコードを書き終えることではなく，分析パイプラインや予測モデルを実際の業務やプロダクトに組み込み，継続的に価値を生み出せる状態にすること\n\n\n\nプログラムが正しく実行され，正しい結果を出力することを保証する仕組みの確保\n\n\n\n\nテストは，この「正しさ」を継続的に検証するための土台\nテストによって挙動が保証されてはじめて，私たちは自信を持ってソフトウェアをリリースし，本番環境へ導入できる\n逆にテストがない状態でのリリースは，「動いているように見える」状態に過ぎない．",
     "crumbs": [
       "ソフトウェアテスト"
     ]
@@ -120,21 +130,129 @@
     "href": "book/004_testing/posts/00-getting-started-with-pytest.html",
     "title": "2  getting started with pytest",
     "section": "",
-    "text": "ノートTL;DRs",
+    "text": "pytestの導入\nをCLIで実行すると，pyproject.toml の dependency-groups.dev に以下のように追加されます．\nWhy --dev dependecy group?\n基本的に pytest はアプリケーションの実行には不要 = ユーザーが利用するパッケージをインストールするときに，pytestまで一緒に配布する必要ないため．",
     "crumbs": [
       "ソフトウェアテスト",
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>getting started with pytest</span>"
     ]
   },
   {
-    "objectID": "book/004_testing/posts/test.html",
-    "href": "book/004_testing/posts/test.html",
-    "title": "3  pytest and Raise Error",
+    "objectID": "book/004_testing/posts/00-getting-started-with-pytest.html#pytestの導入",
+    "href": "book/004_testing/posts/00-getting-started-with-pytest.html#pytestの導入",
+    "title": "2  getting started with pytest",
     "section": "",
-    "text": "import pytest",
+    "text": "uv add --dev pytest\n\n[dependency-groups]\ndev = [\n    \"pytest&gt;=9.0.3\",\n]\n\n\n\n\n\n\n\nノートTEST-DEPS-001 (required)\n\n\n\npytestはuv add --dev pytestでdependency-groups.devに追加する．\n\n\n\n\n\n\n\n\n\n\n\n用途\n配置先\n\n\n\n\n本番実行に必要\ndependencies\n\n\n開発時のみ必要 → 開発者だけが必要\ndependency-groups.dev",
     "crumbs": [
       "ソフトウェアテスト",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>pytest and Raise Error</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>getting started with pytest</span>"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/posts/00-getting-started-with-pytest.html#pytestの実行",
+    "href": "book/004_testing/posts/00-getting-started-with-pytest.html#pytestの実行",
+    "title": "2  getting started with pytest",
+    "section": "pytestの実行",
+    "text": "pytestの実行\n次のような2つのテスト関数を tests/test_one.py に用意します．\ndef test_passing():\n    assert (1, 2, 3) == (1, 2, 3)\n\ndef test_failing():\n    assert (1, 2, 3) == (1, 2, 4)\npytestはファイルやディレクトリを指定して実行することができます． uv run pytest tests/test_one.py で実行すると，以下のような出力が得られます．\n$ uv run pytest tests/test_one.py\n======================== test session starts =========================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollected 2 items\n\ntests/test_one.py .F                                           [100%]\n\n============================== FAILURES ==============================\n____________________________ test_failing ____________________________\n\n    def test_failing():\n&gt;       assert (1, 2, 3) == (1, 2, 4)\nE       assert (1, 2, 3) == (1, 2, 4)\nE\nE         At index 2 diff: 3 != 4\nE         Use -v to get more diff\n\ntests/test_one.py:5: AssertionError\n====================== short test summary info =======================\nFAILED tests/test_one.py::test_failing - assert (1, 2, 3) == (1, 2, 4)\n==================== 1 failed, 1 passed in 0.02s =====================\ntests/test_one.py の右側に並ぶ .F は，テスト関数1つにつき1文字，収集された順（ここでは test_passing → test_failing）で出力される進捗マーカーです．\ntests/test_one.py .F                                           [100%]\n\n\n\n\n\n\n\n\nマーカー\n意味\n\n\n\n\n.\npassed（成功）\n\n\nF\nfailed（assert 失敗など）\n\n\nE\nerror（テスト本体ではなくfixtureやセットアップで例外）\n\n\ns\nskipped（@pytest.mark.skip 等でスキップ）\n\n\nx\nxfailed（期待通り失敗：@pytest.mark.xfail）\n\n\nX\nxpassed（失敗するはずが成功）\n\n\n\n\nつまり .F は「1つ目が成功，2つ目が失敗」を表します．右端の [100%] は収集済みテストのうち実行が完了した割合です．\n1文字ずつではなくテスト名で出したい場合\n後述の -v（verbose）を付けると，.F の代わりにテスト関数名と結果が1行ずつ表示されます．\n% uv run pytest tests/test_one.py -v\n======================== test session starts =========================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0 -- /home/quarto-book/pytest-sandbox/.venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollected 2 items\n\ntests/test_one.py::test_passing PASSED                         [ 50%]\ntests/test_one.py::test_failing FAILED                         [100%]\n\n============================== FAILURES ==============================\n____________________________ test_failing ____________________________\n\n    def test_failing():\n&gt;       assert (1, 2, 3) == (1, 2, 4)\nE       AssertionError: assert (1, 2, 3) == (1, 2, 4)\nE\nE         At index 2 diff: 3 != 4\nE\nE         Full diff:\nE           (\nE               1,\nE               2,...\nE\nE         ...Full output truncated (5 lines hidden), use '-vv' to show\n\ntests/test_one.py:5: AssertionError\n====================== short test summary info =======================\nFAILED tests/test_one.py::test_failing - AssertionError: assert (1, 2, 3) == (1, 2, 4)\n==================== 1 failed, 1 passed in 0.02s =====================\n\nトレースバック\n失敗したテストはトレースバックセクション(=テストが失敗した箇所)に，どこで・何が・なぜ失敗したかが表示されます．\n============================== FAILURES ==============================\n____________________________ test_failing ____________________________\n\n    def test_failing():\n&gt;       assert (1, 2, 3) == (1, 2, 4)\nE       assert (1, 2, 3) == (1, 2, 4)\nE\nE         At index 2 diff: 3 != 4\nE         Use -v to get more diff\n\ntests/test_one.py:5: AssertionError\n各行の記号には意味があります．\n\n\n\n\n\n\n\n\n記号\n意味\n\n\n\n\n____ test_failing ____\n失敗したテスト関数名（区切り見出し）\n\n\n&gt;\n失敗が発生したラインを指すマーカー\n\n\nE\npytest によるエラー説明（assertion の中身の差分など）\n\n\ntests/test_one.py:5\n失敗箇所の ファイル:行番号\n\n\n\n\nここでの At index 2 diff: 3 != 4 は，pytest の assertion introspection 機能によるもので，「tupleのindex 2 で 3 と 4 という差分が発生している」という意味です．単に assert False と出すのではなく，比較対象を分解して見せてくれるのが pytest の強みです．\n最後の short test summary info は，全体の結論サマリです．大量のテストを一度に実行したときに活用します．\n====================== short test summary info =======================\nFAILED tests/test_one.py::test_failing - assert (1, 2, 3) == (1, 2, 4)\n==================== 1 failed, 1 passed in 0.02s =====================\n\n\n-v（verbose）で詳細表示\n-v / --verbose を付けると，進捗が .F の1文字表記ではなくテストごとに1行で表示されます．\n$ uv run pytest -v tests/test_one.py\n============================= test session starts ==============================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0 -- /home/quarto-book/pytest-sandbox/.venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollecting ... collected 2 items\n\ntests/test_one.py::test_passing PASSED                                   [ 50%]\ntests/test_one.py::test_failing FAILED                                   [100%]\n\n=================================== FAILURES ===================================\n_________________________________ test_failing _________________________________\n\n    def test_failing():\n&gt;       assert (1, 2, 3) == (1, 2, 4)\nE       AssertionError: assert (1, 2, 3) == (1, 2, 4)\nE\nE         At index 2 diff: 3 != 4\nE\nE         Full diff:\nE           (\nE               1,\nE               2,...\nE\nE         ...Full output truncated (5 lines hidden), use '-vv' to show\n\ntests/test_one.py:5: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_one.py::test_failing - AssertionError: assert (1, 2, 3) == ...\n========================= 1 failed, 1 passed in 0.01s ==========================\n\n\n\n\n\n\n\n\nオプション\n効果\n\n\n\n\n-v / --verbose\nテスト名を1行ずつ表示，差分を展開\n\n\n-q / --quiet\n逆に出力を最小化（.F すら省く方向）\n\n\n\n\n\n\n--tb=no でトレースバックを抑制\n失敗時のトレースバックは，--tb オプションで表示量を制御できます．--tb=no を指定すると，トレースバックを一切表示せず，サマリだけになります．\n% uv run pytest tests/test_one.py --tb=no\n======================== test session starts =========================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollected 2 items\n\ntests/test_one.py .F                                           [100%]\n\n====================== short test summary info =======================\nFAILED tests/test_one.py::test_failing - assert (1, 2, 3) == (1, 2, 4)\n==================== 1 failed, 1 passed in 0.01s =====================\n\nFAILURES セクションが丸ごと消え，「どのテストが落ちたか」だけが残る\nまず何件・どれが落ちたかを把握したいときや，CI ログを短く保ちたいときに便利\n\n\n\n\n\n\n\n\n\n--tb の値\nトレースバックの表示\n\n\n\n\nlong（デフォルト）\n最も詳細．コンテキストを多く含む\n\n\nshort\n1フレームあたりを短く（assert行と説明のみ）\n\n\nline\n失敗ごとに1行だけ\n\n\nno\nトレースバックを表示しない（サマリのみ）",
+    "crumbs": [
+      "ソフトウェアテスト",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>getting started with pytest</span>"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/posts/01-test-discovery.html",
+    "href": "book/004_testing/posts/01-test-discovery.html",
+    "title": "3  test discovery",
+    "section": "",
+    "text": "pytest のテスト探索規則\npytest は以下の標準的なテスト探索を実装しています．\nテスト探索のカスタマイズ例については，標準的な Python テスト探索の変更を参照してください．\nPython モジュール内では，pytest は標準の unittest.TestCase サブクラス化手法を使ったテストも探索します．",
+    "crumbs": [
+      "ソフトウェアテスト",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>test discovery</span>"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/posts/01-test-discovery.html#pytest-のテスト探索規則",
+    "href": "book/004_testing/posts/01-test-discovery.html#pytest-のテスト探索規則",
+    "title": "3  test discovery",
+    "section": "",
+    "text": "引数が指定されない場合，収集は testpaths（設定されている場合）またはカレントディレクトリから開始されます．また，コマンドライン引数としてディレクトリ・ファイル名・ノード ID を任意に組み合わせて指定することもできます．\nnorecursedirs に一致しないディレクトリに再帰的に入ります．\n対象ディレクトリ内で test_*.py または *_test.py にマッチするファイルを，テストパッケージ名としてインポートして検索します．\n対象ファイルからテストアイテムを収集します：\n\nクラスの外部にある test プレフィックスのテスト関数またはメソッド\n__init__ メソッドを持たない Test プレフィックスのクラス内にある test プレフィックスのテスト関数またはメソッド（@staticmethod や @classmethod でデコレートされたメソッドも対象となります）",
+    "crumbs": [
+      "ソフトウェアテスト",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>test discovery</span>"
+    ]
+  },
+  {
+    "objectID": "book/004_testing/posts/01-test-discovery.html#標準的な-python-テスト探索のカスタマイズ",
+    "href": "book/004_testing/posts/01-test-discovery.html#標準的な-python-テスト探索のカスタマイズ",
+    "title": "3  test discovery",
+    "section": "標準的な Python テスト探索のカスタマイズ",
+    "text": "標準的な Python テスト探索のカスタマイズ\n\nテスト収集時のパスの除外\nCLI で --ignore=path オプションを渡すことで，収集時に特定のテストディレクトリやモジュールを簡単に除外できます．--ignore オプションは複数指定可能です．以下のようなディレクトリ構成を例とします．\ntests/\n|-- example\n|   |-- test_example_01.py\n|   |-- test_example_02.py\n|   '-- test_example_03.py\n|-- foobar\n|   |-- test_foobar_01.py\n|   |-- test_foobar_02.py\n|   '-- test_foobar_03.py\n'-- hello\n    '-- world\n        |-- test_world_01.py\n        |-- test_world_02.py\n        '-- test_world_03.py\n--ignore=tests/foobar/test_foobar_03.py --ignore=tests/hello/ を指定して pytest を実行すると，指定したパターンに一致しないテストモジュールのみが収集されます．\n=========================== test session starts ============================\nplatform linux -- Python 3.x.y, pytest-5.x.y, py-1.x.y, pluggy-0.x.y\nrootdir: $REGENDOC_TMPDIR, inifile:\ncollected 5 items\n\ntests/example/test_example_01.py .                                   [ 20%]\ntests/example/test_example_02.py .                                   [ 40%]\ntests/example/test_example_03.py .                                   [ 60%]\ntests/foobar/test_foobar_01.py .                                     [ 80%]\ntests/foobar/test_foobar_02.py .                                     [100%]\n\n========================= 5 passed in 0.02 seconds =========================\n--ignore-glob オプションを使うと，Unix シェルスタイルのワイルドカードでテストファイルパスを除外できます．_01.py で終わるテストモジュールを除外したい場合は，--ignore-glob='*_01.py' を指定して pytest を実行します．\n\n\nテスト収集時のテストの除外\n収集時に --deselect=item オプションを渡すことで，個別のテストを除外できます．たとえば tests/foobar/test_foobar_01.py に test_a と test_b が含まれている場合，--deselect=tests/foobar/test_foobar_01.py::test_a を指定することで test_a 以外の tests/ 配下のすべてのテストを実行できます．--deselect オプションも複数指定可能です．\n\n\nコマンドラインで指定した重複パスの保持\npytest のデフォルト動作では，コマンドラインで指定された重複パスは無視されます．\npytest path_a path_a\n# collected 1 item（1 回だけ収集）\n重複したテストも収集したい場合は，--keep-duplicates オプションを使います．\npytest --keep-duplicates path_a path_a\n# collected 2 items\n\n\nディレクトリ再帰のカスタマイズ\n設定ファイルで norecursedirs オプションを指定できます．\n# pytest.toml\n[pytest]\nnorecursedirs = [\".svn\", \"_build\", \"tmp*\"]\nこれにより，pytest は Subversion や Sphinx のビルドディレクトリ，tmp プレフィックスのディレクトリに再帰しなくなります．\n\n\n命名規則のカスタマイズ\n設定ファイルで python_files・python_classes・python_functions を指定することで，異なる命名規則を設定できます．\n# pytest.toml\n# 例: \"test\" の代わりに \"check\" を探す\n[pytest]\npython_files = [\"check_*.py\"]\npython_classes = [\"Check\"]\npython_functions = [\"*_check\"]\nこの設定により，pytest は check_*.py にマッチするファイル，Check プレフィックスのクラス，*_check にマッチする関数・メソッドを探索します．たとえば次のファイルがある場合：\n# check_myapp.py\nclass CheckMyApp:\n    def simple_check(self):\n        pass\n\n    def complex_check(self):\n        pass\n収集結果は以下のようになります．\n$ pytest --collect-only\n=========================== test session starts ============================\n...\ncollected 2 items\n\n&lt;Dir pythoncollection.rst-214&gt;\n  &lt;Module check_myapp.py&gt;\n    &lt;Class CheckMyApp&gt;\n      &lt;Function simple_check&gt;\n      &lt;Function complex_check&gt;\n\n======================== 2 tests collected in 0.12s ========================\nスペース区切りで複数のグロブパターンを指定することもできます．\n# pytest.toml\n# 例: \"test\" と \"example\" の両方を探す\n[pytest]\npython_files = [\"test_*.py\", \"example_*.py\"]\n\n\n\n\n\n\nノート\n\n\n\npython_functions と python_classes オプションは，unittest.TestCase のテスト探索には影響しません．pytest がテストケースメソッドの探索を unittest コードに委譲するためです．\n\n\n\n\nコマンドライン引数を Python パッケージとして解釈\n--pyargs オプションを使うと，pytest は引数を Python パッケージ名として解釈し，対応するファイルシステムパスを導出してテストを実行しようとします．たとえば unittest2 がインストールされていれば，次のように実行できます．\npytest --pyargs unittest2.test.test_skipping -q\n設定ファイルの addopts オプションでこの変更を恒久的にすることもできます．\n# pytest.toml\n[pytest]\naddopts = [\"--pyargs\"]\n\n\n収集対象の確認\nテストを実行せずに収集ツリーを確認するには --collect-only を使います．\n$ pytest --collect-only pythoncollection.py\n=========================== test session starts ============================\n...\ncollected 3 items\n\n&lt;Dir pythoncollection.rst-214&gt;\n  &lt;Dir CWD&gt;\n    &lt;Module pythoncollection.py&gt;\n      &lt;Function test_function&gt;\n      &lt;Class TestClass&gt;\n        &lt;Function test_method&gt;\n        &lt;Function test_anothermethod&gt;\n\n======================== 3 tests collected in 0.12s ========================\n\n\nテスト収集のカスタマイズ\nすべての Python ファイルからテストを探索させることもできます．\n# pytest.toml\n[pytest]\npython_files = [\"*.py\"]\nただし，多くのプロジェクトにはインポートされたくない setup.py などのファイルが存在します．また，特定の Python バージョンでしかインポートできないファイルがある場合もあります．そのような場合は，conftest.py にリストアップすることで動的に除外できます．\n# conftest.py\nimport sys\n\ncollect_ignore = [\"setup.py\"]\nif sys.version_info[0] &gt; 2:\n    collect_ignore.append(\"pkg/module_py2.py\")\nUnix シェルスタイルのワイルドカードで除外する場合は collect_ignore_glob を使います．\n# conftest.py\nimport sys\n\ncollect_ignore = [\"setup.py\"]\nif sys.version_info[0] &gt; 2:\n    collect_ignore_glob = [\"*_py2.py\"]\n\n\n__test__ 属性による探索の抑制\npytest 2.6 以降，__test__ 属性を False に設定することで，Test で始まるクラスの探索を防ぐことができます．\n# テストとして探索されない\nclass TestClass:\n    __test__ = False\n抽象テストクラスを扱う際にサブクラスで __test__ を手動設定したくない場合は，ミックスインクラスを使う方法があります．\n# 抽象テストクラスを扱うミックスイン\nclass NotATest:\n    def __init_subclass__(cls):\n        cls.__test__ = NotATest not in cls.__bases__\n\n\n# 抽象テストクラス\nclass AbstractTest(NotATest):\n    pass\n\n\n# テストとして収集されるサブクラス\nclass RealTest(AbstractTest):\n    def test_example(self):\n        assert 1 + 1 == 2\nこのアプローチにより，抽象テストクラスのサブクラスは __test__ 属性を明示的に設定しなくても自動的に収集されます．",
+    "crumbs": [
+      "ソフトウェアテスト",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>test discovery</span>"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/index.html",
+    "href": "book/005_testing_in_practice/index.html",
+    "title": "数値計算とpytest",
+    "section": "",
+    "text": "数値計算とテスト\nデータサイエンスのコードに対するテストも，その目的自体は一般的なソフトウェア開発と同様に， コードが期待どおりに動作することを継続的に検証し，将来の変更による不具合を早期に発見することです．\n一方，テストで取り扱う内容として\nが中心となり，一般的なソフトウェアテストのような結果の完全一致による検証が難しい場合があります． そのため，許容誤差の範囲内で結果を比較したり，乱数シードを固定したりするなど，数値計算・確率処理に適したテスト手法を用いることが重要になります．",
+    "crumbs": [
+      "数値計算とpytest"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/index.html#数値計算とテスト",
+    "href": "book/005_testing_in_practice/index.html#数値計算とテスト",
+    "title": "数値計算とpytest",
+    "section": "",
+    "text": "浮動小数点数による数値計算\n乱数を伴う確率的な処理\n\n\n\nExample 1 浮動小数点数の等価比較\nたとえば，次のテストは一見正しそうに見えますが，失敗します．\ndef test_naive_float():\n    assert 0.1 + 0.2 == 0.3\n実際に確認してみると，\n% uv run pytest tests/test_float.py -v\n=================== test session starts ====================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0 -- /home/quarto-book/pytest-sandbox/.venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollected 1 item\n\ntests/test_float.py::test_naive_float FAILED         [100%]\n\n========================= FAILURES =========================\n_____________________ test_naive_float _____________________\n\n    def test_naive_float():\n&gt;       assert 0.1 + 0.2 == 0.3\nE       assert (0.1 + 0.2) == 0.3\n\ntests/test_float.py:2: AssertionError\n================= short test summary info ==================\nFAILED tests/test_float.py::test_naive_float - assert (0.1 + 0.2) == 0.3\n==================== 1 failed in 0.02s =====================\n0.1 + 0.2 はIEEE 754の二進浮動小数点表現では 0.30000000000000004 となり，0.3 とは厳密には一致しません． 浮動小数点数を == で直接比較してはいけません．",
+    "crumbs": [
+      "数値計算とpytest"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/posts/approximate-equality.html",
+    "href": "book/005_testing_in_practice/posts/approximate-equality.html",
+    "title": "4  Approximate Equality Test",
+    "section": "",
+    "text": "浮動小数点数とRepresentation error\nほとんどの10進小数（decimal fraction）は，2進小数（binary fraction）として 正確には表現できません．あくまで近似されるにすぎません．\n\\(1/3\\) が桁数が固定された10進小数では0.333のように近似されるにすぎないように 2進数でも何ビット使おうとも，10進の \\(0.1\\) を2進小数として正確に表現することはできません．\n2進数では \\(1/10\\) は次のような無限循環小数になります．\n多くのマシンでは，float は最上位ビットから53ビットを分子に，分母を2の冪とする2進小数で近似されます． \\(1/10\\) の場合，その2進小数は 3602879701896397 / 2 ** 55 であり，真の値 \\(1/10\\) に近いものの厳密には一致しません．",
+    "crumbs": [
+      "数値計算とpytest",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Approximate Equality Test</span>"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/posts/approximate-equality.html#浮動小数点数とrepresentation-error",
+    "href": "book/005_testing_in_practice/posts/approximate-equality.html#浮動小数点数とrepresentation-error",
+    "title": "4  Approximate Equality Test",
+    "section": "",
+    "text": "Definition 4.1 浮動小数点数\n\n浮動小数点数は，コンピュータ上では 2進数（binary）として表現される\nIEEE 754 によって標準化されている\n\n\n\n\n\n0.0001100110011001100110011001100110011001100110011...\n\n\nExample 4.1 浮動小数点と等価判定\n\n\nコード\n0.1 + 0.1 + 0.1 == 0.3\n\n\nFalse\n\n\nroundを用いて丸めても，それが計算前に丸めを行っているならば\n\n\nコード\nround(0.1, 1) + round(0.1, 1) + round(0.1, 1) == round(0.3, 1)\n\n\nFalse\n\n\n\n\n\nExample 4.2 浮動小数点の加算と結合法則\n浮動小数点数（IEEE 754）では，各演算ごとに結果を有限桁の仮数部に丸める必要があるため， 加算の順序によって丸め誤差の蓄積が変わり，結合法則\n\\[\n(x + y) + z = x + (y + z)\n\\]\nが成り立ちません．(x + y) + z と x + (y + z) では中間結果が異なる時点で丸められるため，最終結果がずれることがあります．\n\n\nコード\nx, y, z = 1e16, -1e16, 1.0\n\nprint((x + y) + z)   # 0.0 + 1.0 = 1.0\n\n\n1.0\n\n\nコード\nprint(x + (y + z))   # 1e16 付近では ULP=2.0 のため 1.0 が丸めで消える\n\n\n0.0\n\n\ny + z = -1e16 + 1 の真の値は -9999999999999999 ですが，1e16 付近では隣り合う表現可能な数の間隔（ULP）が 2.0 あるため， 1.0 の加算が丸めで消えて -1e16 のままになります．一方 x + y = 0 が先に確定すれば 1.0 はそのまま生き残ります．\n絶対値が桁違いに異なる数を足すとき，小さい方の下位ビットが丸めで失われる現象を 吸収（absorption） と呼びます．\n\n\nコード\nbig, small = 1.0e20, 1.0\nprint(big + small == big)   # True（small が消える）\n\n\nTrue\n\n\n総和を取るときは誤差蓄積を抑えるため，次のような手法が使われます．\n\n絶対値の小さい値から順に足す（ソートしてから加算）\nKahan の補償付き加算（失われた下位ビットを別変数で保持）\npairwise summation（NumPy の np.sum が採用．再帰的に分割して足すことで誤差を \\(O(\\log n)\\) に抑制）\n\n\n\nコード\nimport math\n\narr = [1e16, 1.0, -1e16]\nprint(sum(arr))        # 0.0（左から順）\n\n\n1.0\n\n\nコード\nprint(math.fsum(arr))  # 1.0（厳密な総和，順序非依存）\n\n\n1.0\n\n\nmath.fsum は複数の部分和を保持して厳密な結果を返すため，順序非依存にしたい集計で有用です． 結合法則が崩れるのは「数学的な実数」ではなく，「有限精度＋演算ごとの丸め」という計算機の都合によるものです．\n\n\n\n\n\n\n\n\nノートREMARKS\n\n\n\n\nfloat 系の表示は基本的に，roundされた数値が表示されていると考えるべき\n目安として単精度は約7桁，倍精度は約16桁程度\n正確な10進数表現が必要ならば浮動小数点を用いずに，decimal モジュールの利用を考えるべき",
+    "crumbs": [
+      "数値計算とpytest",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Approximate Equality Test</span>"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/posts/approximate-equality.html#浮動小数点と等価判定",
+    "href": "book/005_testing_in_practice/posts/approximate-equality.html#浮動小数点と等価判定",
+    "title": "4  Approximate Equality Test",
+    "section": "浮動小数点と等価判定",
+    "text": "浮動小数点と等価判定\n\n\n\n\n\n\nノートTEST-FLOAT-001 (required)\n\n\n\n浮動小数点数（やそのシーケンス）の等価判定には == ではなく pytest.approx() を使う．\n\n\n標準ライブラリではmath.isclose() が利用できます．\n&gt;&gt;&gt; math.isclose(0.1 + 0.1 + 0.1, 0.3)\nTrue\npytest を使うテストコードでは，相対許容誤差・絶対許容誤差を簡潔に書ける pytest.approx() を使うのが推奨です．\nfrom pytest import approx\n\ndef test_float_sum():\n    assert 0.1 + 0.1 + 0.1 == approx(0.3)\nただし，Example B.2 で述べるように，pytest.approx() の比較は非対称であることに注意してください．",
+    "crumbs": [
+      "数値計算とpytest",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Approximate Equality Test</span>"
+    ]
+  },
+  {
+    "objectID": "book/005_testing_in_practice/posts/approximate-equality.html#see-also",
+    "href": "book/005_testing_in_practice/posts/approximate-equality.html#see-also",
+    "title": "4  Approximate Equality Test",
+    "section": "See Also",
+    "text": "See Also",
+    "crumbs": [
+      "数値計算とpytest",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Approximate Equality Test</span>"
     ]
   },
   {
@@ -142,7 +260,7 @@
     "href": "book/999_appendix/glossary.html",
     "title": "用語集",
     "section": "",
-    "text": "プログラミングスタイル\nPythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に @pypa_packaging, @PEP561 をベースに記述しています．",
+    "text": "プログラミングスタイル\nPythonパッケージ開発に関する用語をまとめています．用語定義については，基本的に Python Packaging Authority (2025年), Emma Harper Smith (2017年) をベースに記述しています．",
     "crumbs": [
       "Appendices",
       "用語集"
@@ -182,11 +300,22 @@
     ]
   },
   {
+    "objectID": "book/999_appendix/glossary.html#python-basics",
+    "href": "book/999_appendix/glossary.html#python-basics",
+    "title": "用語集",
+    "section": "Python Basics",
+    "text": "Python Basics\n\nglossary:\n  - def: `__debug__`\n    description: |\n      `__debug__` はインタプリタ起動時に決まる組み込み変数．\n      通常起動→ `True`，`python -O` 起動→`False`．`None`, `False`, `True`\n      と同じように代入が禁止されている．",
+    "crumbs": [
+      "Appendices",
+      "用語集"
+    ]
+  },
+  {
     "objectID": "book/999_appendix/glossary.html#ファイル形式",
     "href": "book/999_appendix/glossary.html#ファイル形式",
     "title": "用語集",
     "section": "ファイル形式",
-    "text": "ファイル形式\n\nglossary:\n  - def: __init.py__\n    description: |\n      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う\n\n  - def: setup.py\n    description: |\n      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．\n      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．\n      `python install setup.py` でインストール\n\n  - def: pyproject.toml\n    description: |\n      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．\n\n  - def: eggフォーマット\n    description: |\n      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．\n\n  - def: Wheelフォーマット\n    description: |\n      標準的なビルド済配布物フォーマット．\n\n  - def: stubs\n    description: |\n      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される。",
+    "text": "ファイル形式\n\nglossary:\n  - def: __init.py__\n    description: |\n      Pythonは `__init.py__` が存在するディレクトリをパッケージとして扱う\n\n  - def: setup.py\n    description: |\n      Pythonパッケージのビルドやインストール手順を定義するためのスクリプト．\n      以前はパッケージ配布の標準手段で，現在でも一部の古いプロジェクトで使用される．\n      `python install setup.py` でインストール\n\n  - def: pyproject.toml\n    description: |\n      Pythonプロジェクトの仕様（ビルドや依存関係など）を示す設定ファイル．\n\n  - def: eggフォーマット\n    description: |\n      Wheel以前に使用されていた古いパッケージフォーマット．PyPIにはもうアップロードできない．\n\n  - def: Wheelフォーマット\n    description: |\n      標準的なビルド済配布物フォーマット．\n\n  - def: stubs\n    description: |\n      型情報のみを含むファイルで，実行時コードは含まれない形式．`.pyi` ファイルとして提供される．",
     "crumbs": [
       "Appendices",
       "用語集"
@@ -197,10 +326,82 @@
     "href": "book/999_appendix/glossary.html#testing",
     "title": "用語集",
     "section": "Testing",
-    "text": "Testing\n\nglossary:\n  - def: pytest\n    description: |\n      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．\n\n  - def: セットアップコード (setup code)\n    description: |\n      テスト実行前に必要な準備を行うコード．\n      テストデータの作成，一時ディレクトリの生成，データベース接続，\n      モデルのロードなどが該当する．\n\n  - def: テアダウンコード (teardown code)\n    description: |\n      テスト実行後に行う後片付けのコード．\n      一時ファイルの削除，データベース接続の切断，\n      サーバー停止，モックの解除などが該当する．\n      テストによって作成されたリソースを適切に解放することが目的\n\n  - def: fixture\n    description: |\n      pytestが提供するセットアップおよびティアダウン処理を再利用可能な形で定義する仕組み．\n      複数のテストで共通する準備処理をまとめて管理できる．",
+    "text": "Testing\n\nglossary:\n  - def: pytest\n    description: |\n      Pythonパッケージ用のソフトウェアテストフレームワーク．テストの自動検出・実行・結果の報告をカバーしている．\n\n  - def: fixture\n    description: |\n      pytestが提供するセットアップおよびティアダウン処理を再利用可能な形で定義する仕組み．複数のテストで共通する準備処理をまとめて管理できる．\n\n  - def: セットアップコード (setup code)\n    description: |\n      テスト実行前に必要な準備を行うコード．テストデータの作成，一時ディレクトリの生成，データベース接続，モデルのロードなどが該当する．\n\n  - def: テアダウンコード (teardown code)\n    description: |\n      テスト実行後に行う後片付けのコード．一時ファイルの削除，データベース接続の切断，サーバー停止，モックの解除などが該当する．テストによって作成されたリソースを適切に解放することが目的．\n\n  - def: テストディスカバリ\n    description: |\n      実行するテストを検出すること．pytestにおいて，デフォルトではテストファイルならば，`test_&lt;sth&gt;.py` or `&lt;sth&gt;_test.py`，\n      テスト関数は`test_&lt;func&gt;.py`，テストクラスは `Test&lt;Cls&gt;`を基準に検出してくれる．\n\n\n\n\n\nEmma Harper Smith. 2017年. PEP 561 – Distributing and Packaging Type Information. https://peps.python.org/pep-0561/.\n\n\nPython Packaging Authority. 2025年. Python Packaging User Guide. https://packaging.python.org/en/latest/.",
     "crumbs": [
       "Appendices",
       "用語集"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/python101/assert.html",
+    "href": "book/999_appendix/python101/assert.html",
+    "title": "付録 A — assert statement",
+    "section": "",
+    "text": "assert statement\n利用にあたっての注意",
+    "crumbs": [
+      "Appendices",
+      "python",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`assert` statement</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/python101/assert.html#assert-statement",
+    "href": "book/999_appendix/python101/assert.html#assert-statement",
+    "title": "付録 A — assert statement",
+    "section": "",
+    "text": "Definition A.1 asssert\nassert exppresionはdebuggingに用いられるstatementで， 以下のように記述\nassert expression [\",\" errormessage]\n内部的には\nif __debug__:\n    if not expression1: raise AssertionError(errormessage)\n\n\n失敗時は AssertionError がraiseされる\n__debug__: 組み込み変数．python -O で起動したとき，False となる\n\n\n\n-O モードで起動するとassert statementは評価されないため．プログラムの正常動作を assert に依存させない\n第二引数を含む形でtupleを用いてしまうと，常にassertionが成功してしまう．ただ，python 3.8以降では次のような SyntaxWarning が発生する\n\nassert (x &gt;= 0, \"x must be non-negative\")\n\n&lt;&gt;:3: SyntaxWarning: assertion is always true, perhaps remove parentheses?\n/tmp/ipykernel_27622/2402204461.py:3: SyntaxWarning: assertion is always true, perhaps remove parentheses?\n  assert (x &gt;= 0, \"x must be non-negative\")",
+    "crumbs": [
+      "Appendices",
+      "python",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`assert` statement</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/pytest-details/pytest-approx.html",
+    "href": "book/999_appendix/pytest-details/pytest-approx.html",
+    "title": "付録 B — pytest.approx",
+    "section": "",
+    "text": "pytest.approx\nsyntax\n注意点として，順序付きシーケンスや辞書も比較可能ですが，逆にいうと set などの対応付けが定まらない順不同（unordered）なシーケンスはサポートの対象外となります．\n挙動\nは\nとして動作します．つまり，",
+    "crumbs": [
+      "Appendices",
+      "pytest in detail",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>`pytest.approx`</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/pytest-details/pytest-approx.html#pytest.approx",
+    "href": "book/999_appendix/pytest-details/pytest-approx.html#pytest.approx",
+    "title": "付録 B — pytest.approx",
+    "section": "",
+    "text": "Definition B.1 pytest.approx()\n2つの数値が，許容誤差の範囲内で等しいことを検証(assert)するためのpytestメソッド\n\n\npytest.approx(expected, rel=None, abs=None, nan_ok=False)\n\n\n\n\n\n\n\n\n\n\n引数\n型\n説明\nデフォルト\n\n\n\n\nexpected\nint / float / Decimal / list / tuple / numpy.ndarray / dict など\n比較基準となる期待値．実際の値(actual)との差が許容誤差内に収まるかを判定する．順序付きシーケンスや辞書も比較可能．\n必須\n\n\nrel\nfloat \\| None\n相対許容誤差 (relative tolerance)．expected を基準として誤差の割合を判定する．abs のみ指定した場合は使用されない．\n1e-6\n\n\nabs\nfloat \\| None\n絶対許容誤差 (absolute tolerance)．actual と expected の絶対差で判定する．0.0 付近の比較や非常に小さい値の比較で有効．\n1e-12\n\n\nnan_ok\nbool\nTrue の場合，NaN == NaN を許容する．欠損値を表す NaN を含む配列やデータ構造の比較で利用する．\nFalse\n\n\n\n\n\n\na == pytest.approx(b, rel=1e-6, abs=1e-12)\n\nabs(a - b) &lt;= max(\n    rel * abs(b),\n    abs_tol\n)\n\n\n相対誤差 (rel) と絶対誤差 (abs) のうち，より大きい許容値が採用\n基準値は b が採用される\n\n\nExample B.1 pytest.approxのrelとabs\nimport pytest\n\ndef test_approx():\n\n    a = 11\n    b = 10\n\n    assert a == pytest.approx(b, rel=0.1, abs=0.5)\n    assert a == pytest.approx(b, rel=0.01, abs=0.5)\nとテストを定義します．このとき\n\n\n\n\n比較\n許容誤差\n実際の差\n結果\n\n\n\n\nrel=0.1, abs=0.5\n1.0\n1.0\n✅ 成功\n\n\nrel=0.01, abs=0.5\n0.5\n1.0\n❌ 失敗\n\n\n\n\nとなるはずです．実際に\n$ uv run pytest test_approx.py\n=================== test session starts ====================\nplatform linux -- Python 3.13.8, pytest-9.0.3, pluggy-1.6.0\nrootdir: /home/quarto-book/pytest-sandbox\nconfigfile: pyproject.toml\ncollected 1 item\n\ntest_approx.py F                                     [100%]\n\n========================= FAILURES =========================\n_______________________ test_approx ________________________\n\n    def test_approx():\n\n        a = 11\n        b = 10\n\n        assert a == pytest.approx(b, rel=0.1, abs=0.5)   # True\n&gt;       assert a == pytest.approx(b, rel=0.01, abs=0.5)  # False\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nE       assert 11 == 10 ± 0.5\nE\nE         comparison failed\nE         Obtained: 11\nE         Expected: 10 ± 0.5\n\ntest_approx.py:9: AssertionError\n================= short test summary info ==================\nFAILED test_approx.py::test_approx - assert 11 == 10 ± 0.5\n==================== 1 failed in 0.02s =====================\n\n\n\nExample B.2 pytest.approxの非対称性\npytest.approx() の相対誤差 (rel) は，比較対象の値ではなく 期待値 (expected value) を基準に計算されます．\nそのため，\na == pytest.approx(b)\nは\nb == pytest.approx(a)\nと必ずしも同じ意味にはなりません．\n例えば，\n\n\nコード\nimport pytest\n\n110 == pytest.approx(100, rel=0.0995)\n\n\nFalse\n\n\n一方\n\n\nコード\n100 == pytest.approx(110, rel=0.0995)\n\n\nTrue\n\n\nこのように，pytest.approx() の相対誤差は常に右辺の期待値を基準として計算されるため，比較は非対称 (asymmetric) です．そのため，\nactual == pytest.approx(expected)\nという形式で，「期待値 (expected) を基準に実測値 (actual) を検証する」という使い方が推奨されます．",
+    "crumbs": [
+      "Appendices",
+      "pytest in detail",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>`pytest.approx`</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/pytest-details/pytest-approx.html#non-numeric-typesの取り扱い",
+    "href": "book/999_appendix/pytest-details/pytest-approx.html#non-numeric-typesの取り扱い",
+    "title": "付録 B — pytest.approx",
+    "section": "Non-numeric typesの取り扱い",
+    "text": "Non-numeric typesの取り扱い\n\n\n\n\n\n\nノートRules\n\n\n\n\npytest.approx は数値だけ近似比較し，それ以外は通常の == を使う\n\n\n\n\nExample B.3 Noneを含むケース\n\n\nコード\nimport pytest\n\n\n{\"required\": 1.0000005, \"optional\": None} == pytest.approx(\n    {\"required\": 1, \"optional\": None}\n)\n\n\nTrue\n\n\nこれは内部的に\n\n1.0000005 ≈ 1: 近似比較\nNone == None: 厳密比較\n\nを実行しています．ですので同様に\n\n\nコード\n[None, 1.0000005] == pytest.approx([None, 1])\n\n\nTrue",
+    "crumbs": [
+      "Appendices",
+      "pytest in detail",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>`pytest.approx`</span>"
+    ]
+  },
+  {
+    "objectID": "book/999_appendix/pytest-details/pytest-approx.html#see-also",
+    "href": "book/999_appendix/pytest-details/pytest-approx.html#see-also",
+    "title": "付録 B — pytest.approx",
+    "section": "See Also",
+    "text": "See Also\npytest-dev team (2025年)\n\n\n\n\npytest-dev team. 2025年. pytest.approx. https://docs.pytest.org/en/stable/reference/reference.html#pytest-approx.",
+    "crumbs": [
+      "Appendices",
+      "pytest in detail",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>`pytest.approx`</span>"
     ]
   }
 ]

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryo Nakagami">
-<meta name="dcterms.date" content="2026-06-03">
+<meta name="dcterms.date" content="2026-06-04">
 
-<title>2&nbsp; getting started with pytest – Python Package Guideline</title>
+<title>付録 A — assert statement – Python Package Guideline</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,8 +70,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../book/004_testing/posts/01-test-discovery.html" rel="next">
-<link href="../../../book/004_testing/index.html" rel="prev">
+<link href="../../../book/999_appendix/pytest-details/pytest-approx.html" rel="next">
+<link href="../../../book/999_appendix/glossary.html" rel="prev">
 <link href="../../../img/favicon.ico" rel="icon">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -153,7 +153,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="2&nbsp; getting started with pytest – Python Package Guideline">
+<meta property="og:title" content="付録 A — assert statement – Python Package Guideline">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Python Package Guideline">
 </head>
@@ -329,7 +329,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/999_appendix/glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../../book/999_appendix/python101/assert.html">python</a></li><li class="breadcrumb-item"><a href="../../../book/999_appendix/python101/assert.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -425,7 +425,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></span></a>
   </div>
 </li>
@@ -471,16 +471,16 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">python</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="セクションを切り替え">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../book/999_appendix/python101/assert.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../book/999_appendix/python101/assert.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></span></a>
   </div>
 </li>
@@ -515,23 +515,17 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <h2 id="toc-title">目次</h2>
    
   <ul>
-  <li><a href="#pytestの導入" id="toc-pytestの導入" class="nav-link active" data-scroll-target="#pytestの導入">pytestの導入</a></li>
-  <li><a href="#pytestの実行" id="toc-pytestの実行" class="nav-link" data-scroll-target="#pytestの実行">pytestの実行</a>
-  <ul class="collapse">
-  <li><a href="#トレースバック" id="toc-トレースバック" class="nav-link" data-scroll-target="#トレースバック">トレースバック</a></li>
-  <li><a href="#vverboseで詳細表示" id="toc-vverboseで詳細表示" class="nav-link" data-scroll-target="#vverboseで詳細表示"><code>-v</code>（verbose）で詳細表示</a></li>
-  <li><a href="#tbno-でトレースバックを抑制" id="toc-tbno-でトレースバックを抑制" class="nav-link" data-scroll-target="#tbno-でトレースバックを抑制"><code>--tb=no</code> でトレースバックを抑制</a></li>
-  </ul></li>
+  <li><a href="#assert-statement" id="toc-assert-statement" class="nav-link active" data-scroll-target="#assert-statement"><code>assert</code> statement</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/00-getting-started-with-pytest.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/999_appendix/python101/assert.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/00-getting-started-with-pytest.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/999_appendix/glossary.html">Appendices</a></li><li class="breadcrumb-item"><a href="../../../book/999_appendix/python101/assert.html">python</a></li><li class="breadcrumb-item"><a href="../../../book/999_appendix/python101/assert.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">getting started with pytest</span></h1>
+<h1 class="title">付録 A — <code>assert</code> statement</h1>
 </div>
 
 
@@ -548,7 +542,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">公開</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2026-06-03</p>
+      <p class="date">2026-06-04</p>
     </div>
   </div>
   
@@ -566,345 +560,32 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="assert-statement" class="level2">
+<h2 class="anchored" data-anchor-id="assert-statement"><code>assert</code> statement</h2>
+<div id="def-" class="custom_problem blog-custom-border theorem definition">
+<p><span class="theorem-title"><strong>Definition A.1</strong></span> <span class="def-title"><code>asssert</code></span></p>
+<p><a href="https://docs.python.org/3.14/reference/simple_stmts.html#the-assert-statement">assert exppresion</a>はdebuggingに用いられるstatementで， 以下のように記述</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> expression [<span class="st">","</span> errormessage]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>内部的には</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__debug__</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> expression1: <span class="cf">raise</span> <span class="pp">AssertionError</span>(errormessage)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>TL;DR
-</div>
-</div>
-<div class="callout-body-container callout-body">
 <ul>
-<li><strong>TEST-DEPS-001</strong> (required): pytestは<code>uv add --dev pytest</code>で<code>dependency-groups.dev</code>に追加（実行に不要なので<code>dependencies</code>不可）</li>
-<li>pytestテストファイルは<code>test_</code>から始まる</li>
-<li>pytestテスト関数は<code>test_</code>から始まる</li>
+<li>失敗時は <code>AssertionError</code> がraiseされる</li>
+<li><code>__debug__</code>: 組み込み変数．<code>python -O</code> で起動したとき，<code>False</code> となる</li>
 </ul>
-</div>
-</div>
-<section id="pytestの導入" class="level2">
-<h2 class="anchored" data-anchor-id="pytestの導入">pytestの導入</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> add <span class="at">--dev</span> pytest</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>をCLIで実行すると，<code>pyproject.toml</code> の <code>dependency-groups.dev</code> に以下のように追加されます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">[dependency-groups]</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">dev</span> <span class="op">=</span> <span class="op">[</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pytest&gt;=9.0.3"</span><span class="op">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><span class="mini-section">Why <code>--dev</code> dependecy group?</span></p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">ノート</span>TEST-DEPS-001 (required)
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>pytestは<code>uv add --dev pytest</code>で<code>dependency-groups.dev</code>に追加する．</p>
-</div>
-</div>
-<p>基本的に <code>pytest</code> は<strong>アプリケーションの実行には不要</strong> = ユーザーが利用するパッケージをインストールするときに，pytestまで一緒に配布する必要ないため．</p>
-<div class="no-border-top-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 55%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>用途</th>
-<th>配置先</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>本番実行に必要</td>
-<td><code>dependencies</code></td>
-</tr>
-<tr class="even">
-<td>開発時のみ必要 → 開発者だけが必要</td>
-<td><code>dependency-groups.dev</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="pytestの実行" class="level2">
-<h2 class="anchored" data-anchor-id="pytestの実行">pytestの実行</h2>
-<p>次のような2つのテスト関数を <code>tests/test_one.py</code> に用意します．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_passing():</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_failing():</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">assert</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>) <span class="op">==</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>pytest</code>はファイルやディレクトリを指定して実行することができます． <code>uv run pytest tests/test_one.py</code> で実行すると，以下のような出力が得られます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> uv run pytest tests/test_one.py</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">========================</span> test session starts =========================</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.13.8, pytest-9.0.3, pluggy-1.6.0</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rootdir:</span> /home/quarto-book/pytest-sandbox</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">collected</span> 2 items</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py</span> .F                                           <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="ex">==============================</span> FAILURES ==============================</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="ex">____________________________</span> test_failing ____________________________</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">def</span> test_failing<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>       assert <span class="kw">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>       assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         At index 2 diff: 3 != 4</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         Use <span class="at">-v</span> to get more diff</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py:5:</span> AssertionError</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="ex">======================</span> short test summary info =======================</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="ex">FAILED</span> tests/test_one.py::test_failing <span class="at">-</span> assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="ex">====================</span> 1 failed, 1 passed in 0.02s =====================</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>tests/test_one.py</code> の右側に並ぶ <strong><code>.F</code></strong> は，<strong>テスト関数1つにつき1文字</strong>，収集された順（ここでは <code>test_passing</code> → <code>test_failing</code>）で出力される進捗マーカーです．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py</span> .F                                           <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="no-border-top-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 80%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>マーカー</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>.</code></td>
-<td>passed（成功）</td>
-</tr>
-<tr class="even">
-<td><code>F</code></td>
-<td>failed（assert 失敗など）</td>
-</tr>
-<tr class="odd">
-<td><code>E</code></td>
-<td>error（テスト本体ではなくfixtureやセットアップで例外）</td>
-</tr>
-<tr class="even">
-<td><code>s</code></td>
-<td>skipped（<code>@pytest.mark.skip</code> 等でスキップ）</td>
-</tr>
-<tr class="odd">
-<td><code>x</code></td>
-<td>xfailed（期待通り失敗：<code>@pytest.mark.xfail</code>）</td>
-</tr>
-<tr class="even">
-<td><code>X</code></td>
-<td>xpassed（失敗するはずが成功）</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>つまり <code>.F</code> は「1つ目が成功，2つ目が失敗」を表します．右端の <code>[100%]</code> は収集済みテストのうち実行が完了した割合です．</p>
-<p><span class="mini-section">1文字ずつではなくテスト名で出したい場合</span></p>
-<p>後述の <code>-v</code>（verbose）を付けると，<code>.F</code> の代わりにテスト関数名と結果が1行ずつ表示されます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> uv run pytest tests/test_one.py <span class="at">-v</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">========================</span> test session starts =========================</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.13.8, pytest-9.0.3, pluggy-1.6.0 <span class="at">--</span> /home/quarto-book/pytest-sandbox/.venv/bin/python</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cachedir:</span> .pytest_cache</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rootdir:</span> /home/quarto-book/pytest-sandbox</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">collected</span> 2 items</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py::test_passing</span> PASSED                         [ 50%]</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py::test_failing</span> FAILED                         <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">==============================</span> FAILURES ==============================</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">____________________________</span> test_failing ____________________________</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">def</span> test_failing<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>       assert <span class="kw">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>       AssertionError: assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         At index 2 diff: 3 != 4</span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         Full diff:</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>           <span class="er">(</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>               1,</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>               2,...</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         ...Full output truncated <span class="er">(</span><span class="ex">5</span> lines hidden<span class="kw">)</span><span class="ex">,</span> use <span class="st">'-vv'</span> to show</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py:5:</span> AssertionError</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="ex">======================</span> short test summary info =======================</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="ex">FAILED</span> tests/test_one.py::test_failing <span class="at">-</span> AssertionError: assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="ex">====================</span> 1 failed, 1 passed in 0.02s =====================</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="トレースバック" class="level3">
-<h3 class="anchored" data-anchor-id="トレースバック">トレースバック</h3>
-<p>失敗したテストはトレースバックセクション(=テストが失敗した箇所)に，<strong>どこで・何が・なぜ失敗したか</strong>が表示されます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">==============================</span> FAILURES ==============================</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">____________________________</span> test_failing ____________________________</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">def</span> test_failing<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>       assert <span class="kw">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>       assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         At index 2 diff: 3 != 4</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         Use <span class="at">-v</span> to get more diff</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py:5:</span> AssertionError</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>各行の記号には意味があります．</p>
-<div class="no-border-top-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 35%">
-<col style="width: 65%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>記号</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>____ test_failing ____</code></td>
-<td>失敗したテスト関数名（区切り見出し）</td>
-</tr>
-<tr class="even">
-<td><code>&gt;</code></td>
-<td>失敗が発生したラインを指すマーカー</td>
-</tr>
-<tr class="odd">
-<td><code>E</code></td>
-<td>pytest によるエラー説明（assertion の中身の差分など）</td>
-</tr>
-<tr class="even">
-<td><code>tests/test_one.py:5</code></td>
-<td>失敗箇所の <code>ファイル:行番号</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>ここでの <code>At index 2 diff: 3 != 4</code> は，pytest の <strong>assertion introspection</strong> 機能によるもので，「tupleのindex 2 で <code>3</code> と <code>4</code> という差分が発生している」という意味です．単に <code>assert False</code> と出すのではなく，比較対象を分解して見せてくれるのが pytest の強みです．</p>
-<p>最後の <code>short test summary info</code> は，全体の結論サマリです．大量のテストを一度に実行したときに活用します．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">======================</span> short test summary info =======================</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">FAILED</span> tests/test_one.py::test_failing <span class="at">-</span> assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">====================</span> 1 failed, 1 passed in 0.02s =====================</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="vverboseで詳細表示" class="level3">
-<h3 class="anchored" data-anchor-id="vverboseで詳細表示"><code>-v</code>（verbose）で詳細表示</h3>
-<p><code>-v</code> / <code>--verbose</code> を付けると，進捗が <code>.F</code> の1文字表記ではなく<strong>テストごとに1行</strong>で表示されます．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> uv run pytest <span class="at">-v</span> tests/test_one.py</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">=============================</span> test session starts ==============================</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.13.8, pytest-9.0.3, pluggy-1.6.0 <span class="at">--</span> /home/quarto-book/pytest-sandbox/.venv/bin/python</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cachedir:</span> .pytest_cache</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rootdir:</span> /home/quarto-book/pytest-sandbox</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">collecting</span> ... collected 2 items</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py::test_passing</span> PASSED                                   [ 50%]</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py::test_failing</span> FAILED                                   <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="ex">===================================</span> FAILURES ===================================</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="ex">_________________________________</span> test_failing _________________________________</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="ex">def</span> test_failing<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span>       assert <span class="kw">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>       AssertionError: assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         At index 2 diff: 3 != 4</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         Full diff:</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>           <span class="er">(</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>               1,</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>               2,...</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="ex">E</span>         ...Full output truncated <span class="er">(</span><span class="ex">5</span> lines hidden<span class="kw">)</span><span class="ex">,</span> use <span class="st">'-vv'</span> to show</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py:5:</span> AssertionError</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="ex">===========================</span> short test summary info ============================</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="ex">FAILED</span> tests/test_one.py::test_failing <span class="at">-</span> AssertionError: assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> ...</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="ex">=========================</span> 1 failed, 1 passed in 0.01s ==========================</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="no-border-top-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 35%">
-<col style="width: 65%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>オプション</th>
-<th>効果</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>-v</code> / <code>--verbose</code></td>
-<td>テスト名を1行ずつ表示，差分を展開</td>
-</tr>
-<tr class="even">
-<td><code>-q</code> / <code>--quiet</code></td>
-<td>逆に出力を最小化（<code>.F</code> すら省く方向）</td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="tbno-でトレースバックを抑制" class="level3">
-<h3 class="anchored" data-anchor-id="tbno-でトレースバックを抑制"><code>--tb=no</code> でトレースバックを抑制</h3>
-<p>失敗時のトレースバックは，<strong><code>--tb</code> オプションで表示量を制御</strong>できます．<code>--tb=no</code> を指定すると，トレースバックを<strong>一切表示せず</strong>，サマリだけになります．</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">%</span> uv run pytest tests/test_one.py <span class="at">--tb</span><span class="op">=</span>no</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">========================</span> test session starts =========================</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platform</span> linux <span class="at">--</span> Python 3.13.8, pytest-9.0.3, pluggy-1.6.0</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">rootdir:</span> /home/quarto-book/pytest-sandbox</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">configfile:</span> pyproject.toml</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">collected</span> 2 items</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ex">tests/test_one.py</span> .F                                           <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">======================</span> short test summary info =======================</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="ex">FAILED</span> tests/test_one.py::test_failing <span class="at">-</span> assert <span class="er">(</span><span class="ex">1,</span> 2, 3<span class="kw">)</span> <span class="ex">==</span> <span class="er">(</span><span class="ex">1,</span> 2, 4<span class="kw">)</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="ex">====================</span> 1 failed, 1 passed in 0.01s =====================</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="mini-section">利用にあたっての注意</span></p>
 <ul>
-<li><code>FAILURES</code> セクションが丸ごと消え，「どのテストが落ちたか」だけが残る</li>
-<li><strong>まず何件・どれが落ちたかを把握したい</strong>ときや，CI ログを短く保ちたいときに便利</li>
+<li><code>-O</code> モードで起動するとassert statementは評価されないため．プログラムの正常動作を <code>assert</code> に依存させない</li>
+<li>第二引数を含む形でtupleを用いてしまうと，常にassertionが成功してしまう．ただ，python 3.8以降では次のような <code>SyntaxWarning</code> が発生する</li>
 </ul>
-<div class="no-border-top-table">
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 70%">
-</colgroup>
-<thead>
-<tr class="header">
-<th><code>--tb</code> の値</th>
-<th>トレースバックの表示</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>long</code>（デフォルト）</td>
-<td>最も詳細．コンテキストを多く含む</td>
-</tr>
-<tr class="even">
-<td><code>short</code></td>
-<td>1フレームあたりを短く（assert行と説明のみ）</td>
-</tr>
-<tr class="odd">
-<td><code>line</code></td>
-<td>失敗ごとに1行だけ</td>
-</tr>
-<tr class="even">
-<td><code>no</code></td>
-<td>トレースバックを表示しない（サマリのみ）</td>
-</tr>
-</tbody>
-</table>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> (x <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"x must be non-negative"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&gt;</span>:<span class="dv">3</span>: <span class="pp">SyntaxWarning</span>: assertion <span class="kw">is</span> always true, perhaps remove parentheses?</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">/</span>tmp<span class="op">/</span>ipykernel_27622<span class="op">/</span><span class="fl">2402204461.</span><span class="er">py</span>:<span class="dv">3</span>: <span class="pp">SyntaxWarning</span>: assertion <span class="kw">is</span> always true, perhaps remove parentheses?</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">assert</span> (x <span class="op">&gt;=</span> <span class="dv">0</span>, <span class="st">"x must be non-negative"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1330,17 +1011,17 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="RyoNakagami/python-package-guideline" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/python-package-guideline" issue-term="title" theme="github-light" crossorigin="anonymous" async="">
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../book/004_testing/index.html" class="pagination-link" aria-label="ソフトウェアテスト">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">ソフトウェアテスト</span>
+      <a href="../../../book/999_appendix/glossary.html" class="pagination-link" aria-label="用語集">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">用語集</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../book/004_testing/posts/01-test-discovery.html" class="pagination-link" aria-label="test discovery">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../book/999_appendix/pytest-details/pytest-approx.html" class="pagination-link" aria-label="`pytest.approx`">
+        <span class="nav-page-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><code>pytest.approx</code></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1361,7 +1042,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/00-getting-started-with-pytest.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/999_appendix/python101/assert.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

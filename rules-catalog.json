@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "generated_at": "2026-06-03T09:56:12.507457+00:00",
+  "version": "1.1",
+  "generated_at": "2026-06-11T07:26:05.643658+00:00",
   "site_url": "https://ryonakagami.github.io/python-package-guideline",
   "rules": [
     {
@@ -8,8 +8,8 @@
       "statement": "新規パッケージは src layout を採用する",
       "severity": "required",
       "maturity": "stable",
-      "rationale": "テストが install 済みのパッケージに対して実行されるため、\nパッケージング設定の漏れ（include 漏れ、相対 import の崩れ）を\n早期に検出できる。flat layout ではリポジトリルートが\nsys.path に入り、未インストールでも import が通ってしまうため、\n配布後に初めて壊れる事故が起きやすい。\n",
-      "tldr": "- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する。\n  テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。",
+      "rationale": "テストが install 済みのパッケージに対して実行されるため，\nパッケージング設定の漏れ（include 漏れ，相対 import の崩れ）を\n早期に検出できる．flat layout ではリポジトリルートが\nsys.path に入り，未インストールでも import が通ってしまうため，\n配布後に初めて壊れる事故が起きやすい．\n",
+      "tldr": "- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する．\n  テストが install 済みパッケージに対して走るため，パッケージング漏れを早期検出できる．",
       "phase": [
         "init",
         "packaging"
@@ -49,15 +49,15 @@
         "src-layout-pyproject",
         "flat-layout-antipattern"
       ],
-      "vector_text": "新規パッケージは src layout を採用する\nテストが install 済みのパッケージに対して実行されるため、\nパッケージング設定の漏れ（include 漏れ、相対 import の崩れ）を\n早期に検出できる。flat layout ではリポジトリルートが\nsys.path に入り、未インストールでも import が通ってしまうため、\n配布後に初めて壊れる事故が起きやすい。\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する。\n  テストが install 済みパッケージに対して走るため、パッケージング漏れを早期検出できる。"
+      "vector_text": "新規パッケージは src layout を採用する\nテストが install 済みのパッケージに対して実行されるため，\nパッケージング設定の漏れ（include 漏れ，相対 import の崩れ）を\n早期に検出できる．flat layout ではリポジトリルートが\nsys.path に入り，未インストールでも import が通ってしまうため，\n配布後に初めて壊れる事故が起きやすい．\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する．\n  テストが install 済みパッケージに対して走るため，パッケージング漏れを早期検出できる．"
     },
     {
       "id": "PKG-LAYOUT-002",
       "statement": "tests ディレクトリは src の外に置く",
       "severity": "required",
       "maturity": "stable",
-      "rationale": "テストコードを配布パッケージに含めないため。src の外に置けば\nビルド対象から自然に除外され、wheel が不要なテストで膨らまない。\n",
-      "tldr": "- **PKG-LAYOUT-002** (required): tests は src の外に置く。\n  配布パッケージにテストコードを含めないため。",
+      "rationale": "テストコードを配布パッケージに含めないため．src の外に置けば\nビルド対象から自然に除外され，wheel が不要なテストで膨らまない．\n",
+      "tldr": "- **PKG-LAYOUT-002** (required): tests は src の外に置く．\n  配布パッケージにテストコードを含めないため．",
       "phase": [
         "init",
         "packaging"
@@ -90,15 +90,15 @@
         "src-layout-structure",
         "flat-layout-antipattern"
       ],
-      "vector_text": "tests ディレクトリは src の外に置く\nテストコードを配布パッケージに含めないため。src の外に置けば\nビルド対象から自然に除外され、wheel が不要なテストで膨らまない。\n\n- **PKG-LAYOUT-002** (required): tests は src の外に置く。\n  配布パッケージにテストコードを含めないため。"
+      "vector_text": "tests ディレクトリは src の外に置く\nテストコードを配布パッケージに含めないため．src の外に置けば\nビルド対象から自然に除外され，wheel が不要なテストで膨らまない．\n\n- **PKG-LAYOUT-002** (required): tests は src の外に置く．\n  配布パッケージにテストコードを含めないため．"
     },
     {
       "id": "PKG-LAYOUT-003",
       "statement": "既存の flat layout を移行する場合はビルド設定も同時に更新する",
       "severity": "recommended",
       "maturity": "stable",
-      "rationale": "ディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n",
-      "tldr": "- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。\n\n:::",
+      "rationale": "ディレクトリを動かすだけでは不十分で，\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる．\n",
+      "tldr": "- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する．\n  ディレクトリ移動だけではビルドが壊れる．\n\n:::",
       "phase": [
         "init",
         "packaging"
@@ -130,7 +130,61 @@
       "mcp_block_labels": [
         "src-layout-pyproject"
       ],
-      "vector_text": "既存の flat layout を移行する場合はビルド設定も同時に更新する\nディレクトリを動かすだけでは不十分で、\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる。\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する。\n  ディレクトリ移動だけではビルドが壊れる。\n\n:::"
+      "vector_text": "既存の flat layout を移行する場合はビルド設定も同時に更新する\nディレクトリを動かすだけでは不十分で，\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる．\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する．\n  ディレクトリ移動だけではビルドが壊れる．\n\n:::"
+    },
+    {
+      "id": "TEST-DEPS-001",
+      "statement": "pytest は dependency-groups.dev に追加する（uv add --dev pytest）",
+      "severity": "required",
+      "maturity": "stable",
+      "rationale": "pytest はアプリケーションの実行には不要で，開発時にのみ使う．\n開発者だけがインストールし，利用者には配布されないことを目的に．\n`uv add --dev pytest` でpytestを導入する",
+      "tldr": "- **TEST-DEPS-001** (required): pytestは`uv add --dev pytest`で`dependency-groups.dev`に追加（実行に不要なので`dependencies`不可）",
+      "phase": [
+        "testing"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "dependency",
+      "chapter_slug": "getting-started-with-pytest",
+      "chapter_path": "book/004_testing/posts/00-getting-started-with-pytest.qmd",
+      "chapter_url": "https://ryonakagami.github.io/python-package-guideline/book/004_testing/posts/00-getting-started-with-pytest.html",
+      "related_rules": [],
+      "exceptions": [],
+      "mcp_block_labels": [],
+      "vector_text": "pytest は dependency-groups.dev に追加する（uv add --dev pytest）\npytest はアプリケーションの実行には不要で，開発時にのみ使う．\n開発者だけがインストールし，利用者には配布されないことを目的に．\n`uv add --dev pytest` でpytestを導入する\n- **TEST-DEPS-001** (required): pytestは`uv add --dev pytest`で`dependency-groups.dev`に追加（実行に不要なので`dependencies`不可）"
+    },
+    {
+      "id": "TEST-FLOAT-001",
+      "statement": "浮動小数点数（やそのシーケンス）の等価判定には `==` ではなく `pytest.approx()` を使う",
+      "severity": "required",
+      "maturity": "stable",
+      "rationale": "浮動小数点演算の丸め誤差により `0.1 + 0.2 == 0.3` は `False` になる．\n`pytest.approx()` は相対許容誤差（デフォルト `rel=1e-6`）と絶対許容誤差\n（デフォルト `abs=1e-12`）で比較し，直感的かつ簡潔に書けるため，\n手書きの `abs(a - b) < tol` よりも誤りが少ない．\n",
+      "tldr": "- **TEST-FLOAT-001** (required): 浮動小数点数の等価判定は `==` ではなく `pytest.approx()` を使う\n\n\n:::",
+      "phase": [
+        "testing"
+      ],
+      "applies_to": {
+        "primary": [
+          "tests/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "convention",
+      "chapter_slug": "approximate-equality",
+      "chapter_path": "book/005_testing_in_practice/posts/approximate-equality.qmd",
+      "chapter_url": "https://ryonakagami.github.io/python-package-guideline/book/005_testing_in_practice/posts/approximate-equality.html",
+      "related_rules": [],
+      "exceptions": [],
+      "mcp_block_labels": [],
+      "vector_text": "浮動小数点数（やそのシーケンス）の等価判定には `==` ではなく `pytest.approx()` を使う\n浮動小数点演算の丸め誤差により `0.1 + 0.2 == 0.3` は `False` になる．\n`pytest.approx()` は相対許容誤差（デフォルト `rel=1e-6`）と絶対許容誤差\n（デフォルト `abs=1e-12`）で比較し，直感的かつ簡潔に書けるため，\n手書きの `abs(a - b) < tol` よりも誤りが少ない．\n\n- **TEST-FLOAT-001** (required): 浮動小数点数の等価判定は `==` ではなく `pytest.approx()` を使う\n\n\n:::"
     }
   ],
   "chapters": {
@@ -158,7 +212,51 @@
         "src-layout-editable-install",
         "src-layout-pyproject",
         "flat-layout-antipattern"
-      ]
+      ],
+      "digest_md": "# src layout vs flat layout (src-layout)\n\n- phase: init, packaging\n- applies-to (primary): pyproject.toml, src/**\n- applies-to (contextual): tests/**\n- rule-type: structural\n- related: PKG-VERSION-001 (prerequisite), TEST-LAYOUT-001 (contrasts)\n- url: https://ryonakagami.github.io/python-package-guideline/book/001_package/posts/src-layout-vs-flat-layout.html\n\n## Rules\n\n### PKG-LAYOUT-001 — 新規パッケージは src layout を採用する\n\n- severity: required / maturity: stable\n- rationale: テストが install 済みのパッケージに対して実行されるため，\nパッケージング設定の漏れ（include 漏れ，相対 import の崩れ）を\n早期に検出できる．flat layout ではリポジトリルートが\nsys.path に入り，未インストールでも import が通ってしまうため，\n配布後に初めて壊れる事故が起きやすい．\n- exception: C 拡張やビルド成果物をリポジトリ直下に置く必要がある特殊構成 (ref: PKG-LAYOUT-003)\n- blocks: src-layout-structure, src-layout-editable-install, src-layout-pyproject, flat-layout-antipattern\n\n### PKG-LAYOUT-002 — tests ディレクトリは src の外に置く\n\n- severity: required / maturity: stable\n- rationale: テストコードを配布パッケージに含めないため．src の外に置けば\nビルド対象から自然に除外され，wheel が不要なテストで膨らまない．\n- blocks: src-layout-structure, flat-layout-antipattern\n\n### PKG-LAYOUT-003 — 既存の flat layout を移行する場合はビルド設定も同時に更新する\n\n- severity: recommended / maturity: stable\n- rationale: ディレクトリを動かすだけでは不十分で，\ntool.hatch.build.targets などのパッケージ探索パスを\nsrc/ に合わせて更新しないとビルドが壊れる．\n- blocks: src-layout-pyproject\n",
+      "token_count": 541
+    },
+    "getting-started-with-pytest": {
+      "slug": "getting-started-with-pytest",
+      "title": "getting started with pytest",
+      "path": "book/004_testing/posts/00-getting-started-with-pytest.qmd",
+      "url": "https://ryonakagami.github.io/python-package-guideline/book/004_testing/posts/00-getting-started-with-pytest.html",
+      "phase": [
+        "testing"
+      ],
+      "applies_to": {
+        "primary": [
+          "pyproject.toml"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "dependency",
+      "mcp_block_labels": [],
+      "digest_md": "# getting started with pytest (getting-started-with-pytest)\n\n- phase: testing\n- applies-to (primary): pyproject.toml\n- applies-to (contextual): tests/**\n- rule-type: dependency\n- url: https://ryonakagami.github.io/python-package-guideline/book/004_testing/posts/00-getting-started-with-pytest.html\n\n## Rules\n\n### TEST-DEPS-001 — pytest は dependency-groups.dev に追加する（uv add --dev pytest）\n\n- severity: required / maturity: stable\n- rationale: pytest はアプリケーションの実行には不要で，開発時にのみ使う．\n開発者だけがインストールし，利用者には配布されないことを目的に．\n`uv add --dev pytest` でpytestを導入する\n",
+      "token_count": 191
+    },
+    "approximate-equality": {
+      "slug": "approximate-equality",
+      "title": "Approximate Equality Test",
+      "path": "book/005_testing_in_practice/posts/approximate-equality.qmd",
+      "url": "https://ryonakagami.github.io/python-package-guideline/book/005_testing_in_practice/posts/approximate-equality.html",
+      "phase": [
+        "testing"
+      ],
+      "applies_to": {
+        "primary": [
+          "tests/**"
+        ],
+        "contextual": [
+          "tests/**"
+        ]
+      },
+      "rule_type": "convention",
+      "mcp_block_labels": [],
+      "digest_md": "# Approximate Equality Test (approximate-equality)\n\n- phase: testing\n- applies-to (primary): tests/**\n- applies-to (contextual): tests/**\n- rule-type: convention\n- url: https://ryonakagami.github.io/python-package-guideline/book/005_testing_in_practice/posts/approximate-equality.html\n\n## Rules\n\n### TEST-FLOAT-001 — 浮動小数点数（やそのシーケンス）の等価判定には `==` ではなく `pytest.approx()` を使う\n\n- severity: required / maturity: stable\n- rationale: 浮動小数点演算の丸め誤差により `0.1 + 0.2 == 0.3` は `False` になる．\n`pytest.approx()` は相対許容誤差（デフォルト `rel=1e-6`）と絶対許容誤差\n（デフォルト `abs=1e-12`）で比較し，直感的かつ簡潔に書けるため，\n手書きの `abs(a - b) < tol` よりも誤りが少ない．\n",
+      "token_count": 234
     }
   },
   "mcp_blocks": {
@@ -168,8 +266,9 @@
         "PKG-LAYOUT-001",
         "PKG-LAYOUT-002"
       ],
-      "content": "```text\nmypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\n```\n\nポイントは 2 つ。import 対象は `src/mypackage/` の下にあり、`tests/` は `src/` の外にある。",
-      "chapter_slug": "src-layout"
+      "content": "```text\nmypackage/\n├── pyproject.toml\n├── src/\n│   └── mypackage/\n│       ├── __init__.py\n│       └── core.py\n└── tests/\n    └── test_core.py\n```\n\nポイントは 2 つ．import 対象は `src/mypackage/` の下にあり，`tests/` は `src/` の外にある．",
+      "chapter_slug": "src-layout",
+      "token_count": 89
     },
     "src-layout-editable-install": {
       "label": "src-layout-editable-install",
@@ -177,7 +276,8 @@
         "PKG-LAYOUT-001"
       ],
       "content": "```bash\n# src layout では editable install してからテストする\nuv pip install -e .\nuv run pytest\n\n# これにより tests/ は install 済みの mypackage を import する\n# (リポジトリルート経由ではない)\n```",
-      "chapter_slug": "src-layout"
+      "chapter_slug": "src-layout",
+      "token_count": 67
     },
     "src-layout-pyproject": {
       "label": "src-layout-pyproject",
@@ -185,8 +285,9 @@
         "PKG-LAYOUT-001",
         "PKG-LAYOUT-003"
       ],
-      "content": "```toml\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\n```\n\nflat layout から移行する場合、この `packages` 指定の更新を忘れると\nwheel が空になったり、誤ったディレクトリを取り込んだりする。",
-      "chapter_slug": "src-layout"
+      "content": "```toml\n[build-system]\nrequires = [\"hatchling\"]\nbuild-backend = \"hatchling.build\"\n\n[tool.hatch.build.targets.wheel]\npackages = [\"src/mypackage\"]\n```\n\nflat layout から移行する場合，この `packages` 指定の更新を忘れると\nwheel が空になったり，誤ったディレクトリを取り込んだりする．",
+      "chapter_slug": "src-layout",
+      "token_count": 93
     },
     "flat-layout-antipattern": {
       "label": "flat-layout-antipattern",
@@ -194,14 +295,16 @@
         "PKG-LAYOUT-001",
         "PKG-LAYOUT-002"
       ],
-      "content": "```text\n# NG: flat layout。新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く、リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\n```\n\nこの構成では、`mypackage` を install しなくても\nリポジトリルートから import できてしまう。テストが install 済み\nパッケージを検証していないため、配布後に「import できない」事故が起きる。",
-      "chapter_slug": "src-layout"
+      "content": "```text\n# NG: flat layout．新規パッケージでは避ける\nmypackage/\n├── pyproject.toml\n├── mypackage/          # src/ が無く，リポジトリルートに直置き\n│   └── __init__.py\n└── test_core.py        # tests/ ディレクトリも無く直置き\n```\n\nこの構成では，`mypackage` を install しなくても\nリポジトリルートから import できてしまう．テストが install 済み\nパッケージを検証していないため，配布後に「import できない」事故が起きる．",
+      "chapter_slug": "src-layout",
+      "token_count": 168
     }
   },
   "phase_inference": {
     "pyproject.toml": [
       "init",
-      "packaging"
+      "packaging",
+      "testing"
     ],
     "src/**": [
       "init",
@@ -209,14 +312,23 @@
     ],
     "tests/**": [
       "init",
-      "packaging"
+      "packaging",
+      "testing"
     ]
   },
   "phases": [
     "init",
-    "packaging"
+    "packaging",
+    "testing"
   ],
   "categories": [
-    "PKG"
-  ]
+    "PKG",
+    "TEST"
+  ],
+  "overview_md": "# Rules Catalog Overview\n\n5 rules / 3 chapters．詳細は read_chapter(slug)，コード例は read_block(label) で取得する．\n\n- phases: init, packaging, testing\n- categories: PKG, TEST\n\n## Must / Must-not\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する． (章: src-layout)\n- **PKG-LAYOUT-002** (required): tests は src の外に置く． (章: src-layout)\n- **TEST-DEPS-001** (required): pytestは`uv add --dev pytest`で`dependency-groups.dev`に追加（実行に不要なので`dependencies`不可） (章: getting-started-with-pytest)\n- **TEST-FLOAT-001** (required): 浮動小数点数の等価判定は `==` ではなく `pytest.approx()` を使う (章: approximate-equality)\n\n## Chapters\n\n| slug | title | phase | rules |\n| --- | --- | --- | --- |\n| src-layout | src layout vs flat layout | init, packaging | PKG-LAYOUT-001, PKG-LAYOUT-002, PKG-LAYOUT-003 |\n| getting-started-with-pytest | getting started with pytest | testing | TEST-DEPS-001 |\n| approximate-equality | Approximate Equality Test | testing | TEST-FLOAT-001 |\n\n## File routing (glob → phase)\n\n| glob | phase |\n| --- | --- |\n| pyproject.toml | init, packaging, testing |\n| src/** | init, packaging |\n| tests/** | init, packaging, testing |\n",
+  "cheatsheet_md": "# Cheatsheet\n\n## phase: init\n\n### required\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する． (章: src-layout)\n- **PKG-LAYOUT-002** (required): tests は src の外に置く． (章: src-layout)\n\n### recommended\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する． (章: src-layout)\n\n## phase: packaging\n\n### required\n\n- **PKG-LAYOUT-001** (required): 新規パッケージは src layout を採用する． (章: src-layout)\n- **PKG-LAYOUT-002** (required): tests は src の外に置く． (章: src-layout)\n\n### recommended\n\n- **PKG-LAYOUT-003** (recommended): flat から移行する際はビルド設定も同時に更新する． (章: src-layout)\n\n## phase: testing\n\n### required\n\n- **TEST-DEPS-001** (required): pytestは`uv add --dev pytest`で`dependency-groups.dev`に追加（実行に不要なので`dependencies`不可） (章: getting-started-with-pytest)\n- **TEST-FLOAT-001** (required): 浮動小数点数の等価判定は `==` ではなく `pytest.approx()` を使う (章: approximate-equality)\n",
+  "token_counts": {
+    "overview_md": 335,
+    "cheatsheet_md": 309
+  }
 }

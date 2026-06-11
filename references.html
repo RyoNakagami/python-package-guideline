@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python Package Guideline</title>
+<title>References – Python Package Guideline</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,42 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -68,7 +52,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./book/001_package/posts/src-layout-vs-flat-layout.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./img/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -150,8 +135,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Python Package Guideline">
-<meta property="og:description" content="">
+<meta property="og:title" content="References – Python Package Guideline">
 <meta property="og:site_name" content="Python Package Guideline">
 </head>
 
@@ -326,7 +310,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -384,13 +368,13 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -507,17 +491,8 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">目次</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a>
-  <ul class="collapse">
-  <li><a href="#mcp-setup" id="toc-mcp-setup" class="nav-link" data-scroll-target="#mcp-setup">MCP setup</a></li>
-  </ul></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -525,7 +500,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Python Package Guideline</h1>
+<h1 class="title">References</h1>
 </div>
 
 
@@ -542,39 +517,22 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<section id="mcp-setup" class="level2">
-<h2 class="anchored" data-anchor-id="mcp-setup">MCP setup</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">claude</span> mcp add <span class="at">--transport</span> stdio python-guideline <span class="dt">\</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--scope</span> user <span class="dt">\</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--env</span> CATALOG_URL=https://ryonakagami.github.io/python-package-guideline/rules-catalog.json <span class="dt">\</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--</span> quarto-book-mcp</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>~.claude.json</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="st">"mcpServers"</span><span class="er">:</span> <span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"python-guideline"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"stdio"</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"command"</span><span class="fu">:</span> <span class="st">"quarto-book-mcp"</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"args"</span><span class="fu">:</span> <span class="ot">[]</span><span class="fu">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"env"</span><span class="fu">:</span> <span class="fu">{</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"CATALOG_URL"</span><span class="fu">:</span> <span class="st">"https://ryonakagami.github.io/python-package-guideline/rules-catalog.json"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then, claude codeを起動してmcp接続設定を完了した後に</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python-guideline</span> の ping を呼んで</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
-<p>then</p>
-<pre><code>● 応答が返ってきました．
-
-  pong (catalog v1.0, 3 rules)
-
-  カタログバージョン v1.0，ルール数 3 で正常に接続できています．</code></pre>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-PEP561" class="csl-entry" role="listitem">
+Emma Harper Smith. 2017. <em>PEP 561 – Distributing and Packaging Type
+Information</em>. <a href="https://peps.python.org/pep-0561/">https://peps.python.org/pep-0561/</a>.
+</div>
+<div id="ref-pytest_approx" class="csl-entry" role="listitem">
+<span class="nocase">pytest-dev team</span>. 2025.
+<em>Pytest.approx</em>. <a href="https://docs.pytest.org/en/stable/reference/reference.html#pytest-approx">https://docs.pytest.org/en/stable/reference/reference.html#pytest-approx</a>.
+</div>
+<div id="ref-pypa_packaging" class="csl-entry" role="listitem">
+Python Packaging Authority. 2025. <em>Python Packaging User Guide</em>.
+<a href="https://packaging.python.org/en/latest/">https://packaging.python.org/en/latest/</a>.
+</div>
+</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -1001,10 +959,13 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Preface">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="References">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./book/001_package/posts/src-layout-vs-flat-layout.html" class="pagination-link" aria-label="src layout vs flat layout">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">src layout vs flat layout</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -1025,7 +986,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </a>
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/references.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>

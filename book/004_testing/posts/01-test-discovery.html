@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ryo Nakagami">
-<meta name="dcterms.date" content="2024-11-11">
+<meta name="dcterms.date" content="2026-06-04">
 
-<title>3&nbsp; pytest and Raise Error – Python Package Guideline</title>
+<title>3&nbsp; test discovery – Python Package Guideline</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../book/999_appendix/glossary.html" rel="next">
+<link href="../../../book/005_testing_in_practice/index.html" rel="next">
 <link href="../../../book/004_testing/posts/00-getting-started-with-pytest.html" rel="prev">
 <link href="../../../img/favicon.ico" rel="icon">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -153,7 +153,8 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../../styles.css">
-<meta property="og:title" content="3&nbsp; pytest and Raise Error – Python Package Guideline">
+<meta property="og:title" content="3&nbsp; test discovery – Python Package Guideline">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Python Package Guideline">
 </head>
 
@@ -328,7 +329,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/01-test-discovery.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="サイドバーを切り替える" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="サーチ" onclick="window.quartoOpenSearch();">
@@ -390,6 +391,12 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -424,16 +431,16 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../book/004_testing/posts/test.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></span></a>
+  <a href="../../../book/004_testing/posts/01-test-discovery.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+            <a href="../../../book/005_testing_in_practice/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">数値計算とpytest</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -441,10 +448,61 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../../../book/005_testing_in_practice/posts/approximate-equality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Approximate Equality Test</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../../../book/999_appendix/glossary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">用語集</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../book/999_appendix/python101/assert.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>assert</code> statement</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">pytest in detail</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="セクションを切り替え">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../book/999_appendix/pytest-details/pytest-approx.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title"><code>pytest.approx</code></span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -452,16 +510,34 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目次</h2>
+   
+  <ul>
+  <li><a href="#pytest-のテスト探索規則" id="toc-pytest-のテスト探索規則" class="nav-link active" data-scroll-target="#pytest-のテスト探索規則">pytest のテスト探索規則</a></li>
+  <li><a href="#標準的な-python-テスト探索のカスタマイズ" id="toc-標準的な-python-テスト探索のカスタマイズ" class="nav-link" data-scroll-target="#標準的な-python-テスト探索のカスタマイズ">標準的な Python テスト探索のカスタマイズ</a>
+  <ul class="collapse">
+  <li><a href="#テスト収集時のパスの除外" id="toc-テスト収集時のパスの除外" class="nav-link" data-scroll-target="#テスト収集時のパスの除外">テスト収集時のパスの除外</a></li>
+  <li><a href="#テスト収集時のテストの除外" id="toc-テスト収集時のテストの除外" class="nav-link" data-scroll-target="#テスト収集時のテストの除外">テスト収集時のテストの除外</a></li>
+  <li><a href="#コマンドラインで指定した重複パスの保持" id="toc-コマンドラインで指定した重複パスの保持" class="nav-link" data-scroll-target="#コマンドラインで指定した重複パスの保持">コマンドラインで指定した重複パスの保持</a></li>
+  <li><a href="#ディレクトリ再帰のカスタマイズ" id="toc-ディレクトリ再帰のカスタマイズ" class="nav-link" data-scroll-target="#ディレクトリ再帰のカスタマイズ">ディレクトリ再帰のカスタマイズ</a></li>
+  <li><a href="#命名規則のカスタマイズ" id="toc-命名規則のカスタマイズ" class="nav-link" data-scroll-target="#命名規則のカスタマイズ">命名規則のカスタマイズ</a></li>
+  <li><a href="#コマンドライン引数を-python-パッケージとして解釈" id="toc-コマンドライン引数を-python-パッケージとして解釈" class="nav-link" data-scroll-target="#コマンドライン引数を-python-パッケージとして解釈">コマンドライン引数を Python パッケージとして解釈</a></li>
+  <li><a href="#収集対象の確認" id="toc-収集対象の確認" class="nav-link" data-scroll-target="#収集対象の確認">収集対象の確認</a></li>
+  <li><a href="#テスト収集のカスタマイズ" id="toc-テスト収集のカスタマイズ" class="nav-link" data-scroll-target="#テスト収集のカスタマイズ">テスト収集のカスタマイズ</a></li>
+  <li><a href="#test__-属性による探索の抑制" id="toc-test__-属性による探索の抑制" class="nav-link" data-scroll-target="#test__-属性による探索の抑制"><code>__test__</code> 属性による探索の抑制</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/01-test-discovery.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/test.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../book/004_testing/index.html">ソフトウェアテスト</a></li><li class="breadcrumb-item"><a href="../../../book/004_testing/posts/01-test-discovery.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">pytest and Raise Error</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">test discovery</span></h1>
 </div>
 
 
@@ -478,14 +554,14 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">公開</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-11-11</p>
+      <p class="date">2026-06-04</p>
     </div>
   </div>
   
     <div>
     <div class="quarto-title-meta-heading">更新日</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">2026-06-02</p>
+      <p class="date-modified">2026-06-05</p>
     </div>
   </div>
     
@@ -496,11 +572,201 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </header>
 
 
-<div id="7671cfef" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytest</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="pytest-のテスト探索規則" class="level2">
+<h2 class="anchored" data-anchor-id="pytest-のテスト探索規則">pytest のテスト探索規則</h2>
+<p>pytest は以下の標準的なテスト探索を実装しています．</p>
+<ul>
+<li>引数が指定されない場合，収集は <code>testpaths</code>（設定されている場合）またはカレントディレクトリから開始されます．また，コマンドライン引数としてディレクトリ・ファイル名・ノード ID を任意に組み合わせて指定することもできます．</li>
+<li><code>norecursedirs</code> に一致しないディレクトリに再帰的に入ります．</li>
+<li>対象ディレクトリ内で <code>test_*.py</code> または <code>*_test.py</code> にマッチするファイルを，テストパッケージ名としてインポートして検索します．</li>
+<li>対象ファイルからテストアイテムを収集します：
+<ul>
+<li>クラスの外部にある <code>test</code> プレフィックスのテスト関数またはメソッド</li>
+<li><code>__init__</code> メソッドを持たない <code>Test</code> プレフィックスのクラス内にある <code>test</code> プレフィックスのテスト関数またはメソッド（<code>@staticmethod</code> や <code>@classmethod</code> でデコレートされたメソッドも対象となります）</li>
+</ul></li>
+</ul>
+<p>テスト探索のカスタマイズ例については，<a href="https://docs.pytest.org/en/stable/how-to/collect.html">標準的な Python テスト探索の変更</a>を参照してください．</p>
+<p>Python モジュール内では，pytest は標準の <code>unittest.TestCase</code> サブクラス化手法を使ったテストも探索します．</p>
+</section>
+<section id="標準的な-python-テスト探索のカスタマイズ" class="level2">
+<h2 class="anchored" data-anchor-id="標準的な-python-テスト探索のカスタマイズ">標準的な Python テスト探索のカスタマイズ</h2>
+<section id="テスト収集時のパスの除外" class="level3">
+<h3 class="anchored" data-anchor-id="テスト収集時のパスの除外">テスト収集時のパスの除外</h3>
+<p>CLI で <code>--ignore=path</code> オプションを渡すことで，収集時に特定のテストディレクトリやモジュールを簡単に除外できます．<code>--ignore</code> オプションは複数指定可能です．以下のようなディレクトリ構成を例とします．</p>
+<pre><code>tests/
+|-- example
+|   |-- test_example_01.py
+|   |-- test_example_02.py
+|   '-- test_example_03.py
+|-- foobar
+|   |-- test_foobar_01.py
+|   |-- test_foobar_02.py
+|   '-- test_foobar_03.py
+'-- hello
+    '-- world
+        |-- test_world_01.py
+        |-- test_world_02.py
+        '-- test_world_03.py</code></pre>
+<p><code>--ignore=tests/foobar/test_foobar_03.py --ignore=tests/hello/</code> を指定して pytest を実行すると，指定したパターンに一致しないテストモジュールのみが収集されます．</p>
+<pre><code>=========================== test session starts ============================
+platform linux -- Python 3.x.y, pytest-5.x.y, py-1.x.y, pluggy-0.x.y
+rootdir: $REGENDOC_TMPDIR, inifile:
+collected 5 items
+
+tests/example/test_example_01.py .                                   [ 20%]
+tests/example/test_example_02.py .                                   [ 40%]
+tests/example/test_example_03.py .                                   [ 60%]
+tests/foobar/test_foobar_01.py .                                     [ 80%]
+tests/foobar/test_foobar_02.py .                                     [100%]
+
+========================= 5 passed in 0.02 seconds =========================</code></pre>
+<p><code>--ignore-glob</code> オプションを使うと，Unix シェルスタイルのワイルドカードでテストファイルパスを除外できます．<code>_01.py</code> で終わるテストモジュールを除外したい場合は，<code>--ignore-glob='*_01.py'</code> を指定して pytest を実行します．</p>
+</section>
+<section id="テスト収集時のテストの除外" class="level3">
+<h3 class="anchored" data-anchor-id="テスト収集時のテストの除外">テスト収集時のテストの除外</h3>
+<p>収集時に <code>--deselect=item</code> オプションを渡すことで，個別のテストを除外できます．たとえば <code>tests/foobar/test_foobar_01.py</code> に <code>test_a</code> と <code>test_b</code> が含まれている場合，<code>--deselect=tests/foobar/test_foobar_01.py::test_a</code> を指定することで <code>test_a</code> 以外の <code>tests/</code> 配下のすべてのテストを実行できます．<code>--deselect</code> オプションも複数指定可能です．</p>
+</section>
+<section id="コマンドラインで指定した重複パスの保持" class="level3">
+<h3 class="anchored" data-anchor-id="コマンドラインで指定した重複パスの保持">コマンドラインで指定した重複パスの保持</h3>
+<p>pytest のデフォルト動作では，コマンドラインで指定された重複パスは無視されます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> path_a path_a</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># collected 1 item（1 回だけ収集）</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>重複したテストも収集したい場合は，<code>--keep-duplicates</code> オプションを使います．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">--keep-duplicates</span> path_a path_a</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># collected 2 items</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ディレクトリ再帰のカスタマイズ" class="level3">
+<h3 class="anchored" data-anchor-id="ディレクトリ再帰のカスタマイズ">ディレクトリ再帰のカスタマイズ</h3>
+<p>設定ファイルで <code>norecursedirs</code> オプションを指定できます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pytest.toml</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[pytest]</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">norecursedirs</span> <span class="op">=</span> <span class="op">[</span><span class="st">".svn"</span><span class="op">,</span> <span class="st">"_build"</span><span class="op">,</span> <span class="st">"tmp*"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>これにより，pytest は Subversion や Sphinx のビルドディレクトリ，<code>tmp</code> プレフィックスのディレクトリに再帰しなくなります．</p>
+</section>
+<section id="命名規則のカスタマイズ" class="level3">
+<h3 class="anchored" data-anchor-id="命名規則のカスタマイズ">命名規則のカスタマイズ</h3>
+<p>設定ファイルで <code>python_files</code>・<code>python_classes</code>・<code>python_functions</code> を指定することで，異なる命名規則を設定できます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pytest.toml</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 例: "test" の代わりに "check" を探す</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[pytest]</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dt">python_files</span> <span class="op">=</span> <span class="op">[</span><span class="st">"check_*.py"</span><span class="op">]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dt">python_classes</span> <span class="op">=</span> <span class="op">[</span><span class="st">"Check"</span><span class="op">]</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dt">python_functions</span> <span class="op">=</span> <span class="op">[</span><span class="st">"*_check"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>この設定により，pytest は <code>check_*.py</code> にマッチするファイル，<code>Check</code> プレフィックスのクラス，<code>*_check</code> にマッチする関数・メソッドを探索します．たとえば次のファイルがある場合：</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check_myapp.py</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CheckMyApp:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> simple_check(<span class="va">self</span>):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> complex_check(<span class="va">self</span>):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>収集結果は以下のようになります．</p>
+<pre><code>$ pytest --collect-only
+=========================== test session starts ============================
+...
+collected 2 items
+
+&lt;Dir pythoncollection.rst-214&gt;
+  &lt;Module check_myapp.py&gt;
+    &lt;Class CheckMyApp&gt;
+      &lt;Function simple_check&gt;
+      &lt;Function complex_check&gt;
+
+======================== 2 tests collected in 0.12s ========================</code></pre>
+<p>スペース区切りで複数のグロブパターンを指定することもできます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pytest.toml</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 例: "test" と "example" の両方を探す</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">[pytest]</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="dt">python_files</span> <span class="op">=</span> <span class="op">[</span><span class="st">"test_*.py"</span><span class="op">,</span> <span class="st">"example_*.py"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+ノート
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>python_functions</code> と <code>python_classes</code> オプションは，<code>unittest.TestCase</code> のテスト探索には影響しません．pytest がテストケースメソッドの探索を unittest コードに委譲するためです．</p>
+</div>
+</div>
+</section>
+<section id="コマンドライン引数を-python-パッケージとして解釈" class="level3">
+<h3 class="anchored" data-anchor-id="コマンドライン引数を-python-パッケージとして解釈">コマンドライン引数を Python パッケージとして解釈</h3>
+<p><code>--pyargs</code> オプションを使うと，pytest は引数を Python パッケージ名として解釈し，対応するファイルシステムパスを導出してテストを実行しようとします．たとえば <code>unittest2</code> がインストールされていれば，次のように実行できます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">--pyargs</span> unittest2.test.test_skipping <span class="at">-q</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>設定ファイルの <code>addopts</code> オプションでこの変更を恒久的にすることもできます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pytest.toml</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[pytest]</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="dt">addopts</span> <span class="op">=</span> <span class="op">[</span><span class="st">"--pyargs"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="収集対象の確認" class="level3">
+<h3 class="anchored" data-anchor-id="収集対象の確認">収集対象の確認</h3>
+<p>テストを実行せずに収集ツリーを確認するには <code>--collect-only</code> を使います．</p>
+<pre><code>$ pytest --collect-only pythoncollection.py
+=========================== test session starts ============================
+...
+collected 3 items
+
+&lt;Dir pythoncollection.rst-214&gt;
+  &lt;Dir CWD&gt;
+    &lt;Module pythoncollection.py&gt;
+      &lt;Function test_function&gt;
+      &lt;Class TestClass&gt;
+        &lt;Function test_method&gt;
+        &lt;Function test_anothermethod&gt;
+
+======================== 3 tests collected in 0.12s ========================</code></pre>
+</section>
+<section id="テスト収集のカスタマイズ" class="level3">
+<h3 class="anchored" data-anchor-id="テスト収集のカスタマイズ">テスト収集のカスタマイズ</h3>
+<p>すべての Python ファイルからテストを探索させることもできます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pytest.toml</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="kw">[pytest]</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">python_files</span> <span class="op">=</span> <span class="op">[</span><span class="st">"*.py"</span><span class="op">]</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>ただし，多くのプロジェクトにはインポートされたくない <code>setup.py</code> などのファイルが存在します．また，特定の Python バージョンでしかインポートできないファイルがある場合もあります．そのような場合は，<code>conftest.py</code> にリストアップすることで動的に除外できます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conftest.py</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>collect_ignore <span class="op">=</span> [<span class="st">"setup.py"</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sys.version_info[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">2</span>:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    collect_ignore.append(<span class="st">"pkg/module_py2.py"</span>)</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Unix シェルスタイルのワイルドカードで除外する場合は <code>collect_ignore_glob</code> を使います．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># conftest.py</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>collect_ignore <span class="op">=</span> [<span class="st">"setup.py"</span>]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> sys.version_info[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="dv">2</span>:</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    collect_ignore_glob <span class="op">=</span> [<span class="st">"*_py2.py"</span>]</span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="test__-属性による探索の抑制" class="level3">
+<h3 class="anchored" data-anchor-id="test__-属性による探索の抑制"><code>__test__</code> 属性による探索の抑制</h3>
+<p>pytest 2.6 以降，<code>__test__</code> 属性を <code>False</code> に設定することで，<code>Test</code> で始まるクラスの探索を防ぐことができます．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># テストとして探索されない</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TestClass:</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    __test__ <span class="op">=</span> <span class="va">False</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>抽象テストクラスを扱う際にサブクラスで <code>__test__</code> を手動設定したくない場合は，ミックスインクラスを使う方法があります．</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 抽象テストクラスを扱うミックスイン</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> NotATest:</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init_subclass__</span>(cls):</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        cls.__test__ <span class="op">=</span> NotATest <span class="kw">not</span> <span class="kw">in</span> cls.__bases__</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 抽象テストクラス</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AbstractTest(NotATest):</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># テストとして収集されるサブクラス</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> RealTest(AbstractTest):</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> test_example(<span class="va">self</span>):</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">assert</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span> <span class="op">==</span> <span class="dv">2</span></span></code></pre></div><button title="コピー" class="code-copy-button"><i class="bi"></i></button></div>
+<p>このアプローチにより，抽象テストクラスのサブクラスは <code>__test__</code> 属性を明示的に設定しなくても自動的に収集されます．</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>
@@ -925,7 +1191,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="RyoNakagami/statistics-for-regression-monkey" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+<script src="https://utteranc.es/client.js" repo="RyoNakagami/python-package-guideline" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
@@ -934,8 +1200,8 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../book/999_appendix/glossary.html" class="pagination-link" aria-label="用語集">
-        <span class="nav-page-text">用語集</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../book/005_testing_in_practice/index.html" class="pagination-link" aria-label="数値計算とpytest">
+        <span class="nav-page-text">数値計算とpytest</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -956,7 +1222,7 @@ gtag('config', 'G-EX9H7GRLTH', { 'anonymize_ip': true});
 </a>
   </li>  
 </ul>
-    <div class="toc-actions"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/test.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/RyoNakagami/python-package-guideline/edit/main/book/004_testing/posts/01-test-discovery.qmd" class="toc-action"><i class="bi bi-github"></i>編集</a></li><li><a href="https://github.com/RyoNakagami/python-package-guideline/issues" class="toc-action"><i class="bi empty"></i>問題を報告</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
